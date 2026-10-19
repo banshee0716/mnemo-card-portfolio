@@ -10,7 +10,7 @@
 
 | # | 頁面 | 路徑 | 版型 | 來源 |
 | --- | --- | --- | --- | --- |
-| 1 | 作品集首頁 | `` (根) | 自訂 Astro 頁（`src/pages/index.astro`） | 新寫，文案經 owner 同意（工作票 03） |
+| 1 | 作品集首頁（導覽） | `` (根) | 自訂 Astro 頁（`src/pages/index.astro`） | 新寫，文案經 owner 同意（工作票 03） |
 | 2 | 學習科學導讀 | `learning-science/` | Starlight | 自文件站搬入 |
 | 3 | 檢索練習 | `learning-science/retrieval-practice/` | Starlight | 自文件站搬入 |
 | 4 | 間隔練習 | `learning-science/spaced-practice/` | Starlight | 自文件站搬入 |
@@ -19,6 +19,7 @@
 | 7 | 認知負荷理論 | `learning-science/cognitive-load/` | Starlight | 自文件站搬入 |
 | 8 | KLI 框架 | `learning-science/kli-framework/` | Starlight | 自文件站搬入 |
 | 9 | 產品怎麼用 | `product/` | Starlight | 新寫，文案經 owner 同意（工作票 03） |
+| 10 | 專案設計 | `design/` | Starlight | 原首頁雙鑽石文案搬入（owner 2026-10-19；工作票 03 文案、04 上站） |
 
 搬入來源固定為文件站儲存庫 commit `b2d1dc9`（slice 5 RELEASED）的 `src/content/docs/learning-science/*.mdx`。
 
@@ -40,13 +41,28 @@
   4. 字型 Noto Sans TC（內文）、Noto Serif TC（標題）；Logo 用文件站的 `src/assets/logo.svg`。
 - **R4 首頁主題**：首頁 `<html>` 的 `data-theme` 依序取：`localStorage` 的 `starlight-theme`（與 Starlight 頁共用）、
   系統 `prefers-color-scheme`；以 `<head>` 內的行內腳本在繪製前設定（讀 `localStorage` 包 try/catch）。首頁不放主題切換鈕。
-- **R5 首頁結構**（「1 分鐘了解專案特色」，以雙鑽石模型呈現；owner 2026-10-19 取代原「問題 → 成果 → 分支」）：
-  1. 一個 `h1`（網站名稱與一句定位）；之後的 `h2` 恰為五個，依序：**探索（Discover）**、**定義（Define）**、
-     **發展（Develop）**、**交付（Deliver）**、**分支**（繼續讀）。前四個 h2 的文字必須以「探索」「定義」「發展」「交付」開頭；
-     確切文字在工作票 03 文案定稿後寫死進 AC10。
+- **R5 首頁結構**（導覽頁；owner 2026-10-19：產品自己的首頁已介紹功能，作品集首頁只負責連結與引導）：
+  1. 一個 `h1`（網站名稱）與一句定位（W16）；之後恰四個入口，每個入口是一個 `h2`，`h2` 內只有一個連結，下面接一句說明（W16）。依序：
+     專案設計（`design/`）、學習科學導讀（`learning-science/`）、產品怎麼用（`product/`）、
+     操作文件（`https://banshee0716.github.io/mnemo-card-docs/`，文件站根目錄，外部連結）。確切文字在工作票 03 定稿後寫死進 AC10。
+  2. 首頁不連產品正式站（owner D2，2026-10-19 再確認）。
+  3. 頁尾（`<footer>`，在 `<main>` 之外）只有署名：作者姓名（W12，**待 owner 提供**）與 GitHub 個人頁連結
+     `https://github.com/banshee0716`；不放電子郵件。姓名未提供前，工作票 03 文案以 `【作者姓名：待 owner 提供】` 佔位，
+     佔位不得上站（AC20）。
+  4. **閱讀長度（約半分鐘內掃完）**：`<main>` 的可見文字去掉所有空白後，字元數 **60–180**（AC19）。`h1` 計入；跳到主要內容連結與
+     `<footer>` 不計入。理由：首頁只是導覽，讀者掃過定位句與四個入口就該能選；以中文默讀約每分鐘 390 字（R5a 第 4 點）計，
+     180 字約 28 秒。估算：定位句約 40 字＋四個入口各約 5 字標題與 20–30 字說明，約 140–160 字，上限留一點餘裕；
+     下限 60 字確保定位句與四個入口標題都在。
+  5. 首頁每一句關於 Mnemo-Card 的話對到 §3 的 W 或 N 項；不得出現 §3.4 禁止類別。
+  6. 首頁第一個可聚焦元素是「跳到主要內容」連結，目標為 `<main>` 的 `id`。
+  7. 頁面不載入外部腳本、字型或追蹤；只有站內資源。
+- **R5a 專案設計頁**（`design/`，Starlight 頁；以雙鑽石模型呈現；文案即原首頁 S3 已核對的雙鑽石文案，措辭不變）：
+  1. 頁面標題（Starlight `title`，即 h1）「專案設計」；前言 `prev: false`、`next: false`。標題下一段引導句（W16），
+     之後的 `h2` 恰為五個，依序：**探索（Discover）**、**定義（Define）**、**發展（Develop）**、**交付（Deliver）**、**繼續讀**。
+     前四個 h2 的文字必須以「探索」「定義」「發展」「交付」開頭；確切文字寫死進 AC10。
   2. 各階段只能用下表指定的白名單項目（§3）；表內沒有的事實不得寫。雙鑽石是作者整理專案的呈現方式（W16）：
      頁面上**不放**「這是事後整理」之類的免責句（owner 2026-10-19），但任何階段都不得寫出表外、沒有出處的設計研究活動
-     （例如使用者訪談、問卷、可用性測試；§3.1 W15）。h1 定位句、「以雙鑽石整理」的引導句與分支區引導句屬 W16。
+     （例如使用者訪談、問卷、可用性測試；§3.1 W15）。引導句、「以雙鑽石整理」的句子與「繼續讀」的說明句屬 W16。
 
      | 階段 | 講什麼 | 可用項目 |
      | --- | --- | --- |
@@ -55,20 +71,14 @@
      | 發展 | 最值得談的功能：五步學一張卡、兩種提示、固定複習日程、Markdown 匯入匯出、AI 產卡技能、鍵盤操作；開發方法一段概念文字 | W2–W7、W10 |
      | 交付 | 小規模試用中；一次合成壓力測試的結果 | W9、N1、N2 |
 
-  3. 分支區恰有兩個入口，依序：學習科學導讀（`learning-science/`）、產品怎麼用（`product/`）。首頁不連產品正式站（owner D2）；
-     文件站由產品摘要頁連過去。
-  4. 頁尾（`<footer>`，在 `<main>` 之外）只有署名：作者姓名（W12，**待 owner 提供**）與 GitHub 個人頁連結
-     `https://github.com/banshee0716`；不放電子郵件。姓名未提供前，工作票 03 文案以 `【作者姓名：待 owner 提供】` 佔位，
-     佔位不得上站（AC20）。
-  5. **閱讀長度（約 1 分鐘多）**：`<main>` 的可見文字去掉所有空白後，字元數 **250–450**（AC19）。`h1` 在 `<main>` 之內，
-     **計入**；跳到主要內容連結與 `<footer>` 在 `<main>` 之外，不計入。預算理由：Brysbaert (2019) 的統合分析估計中文**默讀**
-     約每分鐘 260 詞；以該文常用的 1.5 字＝1 詞換算，約每分鐘 390 字，所以 450 字約 1.2 分鐘（工作票 03 的 S3 核對者 2026-10-19 查證；
-     原先「每分鐘 250–300 字」較可能是朗讀的字數，已刪除）。owner 2026-10-19 裁定上限約 450 字，不刪內容；下限 250 字確保五個 h2 區段
-     平均各有約 50 字的實際內容。數字、英文與標點都算一個字元（量法簡單、可重現），研究只計中文字，所以時間只是近似。
-  6. 首頁每一句關於 Mnemo-Card 的話對到 §3 的 W 或 N 項；不得出現 §3.4 禁止類別。
-  7. 首頁第一個可聚焦元素是「跳到主要內容」連結，目標為 `<main>` 的 `id`。
-  8. 頁面不載入外部腳本、字型或追蹤；只有站內資源。
-- **R6 Starlight 側欄**：兩個群組，依序「學習科學」（導讀＋六篇，順序與文件站相同）、「產品」（產品怎麼用）。
+  3. 「繼續讀」恰有兩個連結，依序到學習科學導讀、產品怎麼用。W1 不附連結。
+  4. **閱讀長度（約 1 分鐘多）**：h1 加 `.sl-markdown-content` 的 `innerText` 去掉所有空白後，字元數 **250–450**（AC19）。
+     不含側欄、頁首、文章目錄與上下篇。預算理由：Brysbaert (2019) 的統合分析估計中文**默讀**約每分鐘 260 詞；以該文常用的
+     1.5 字＝1 詞換算，約每分鐘 390 字，所以 450 字約 1.2 分鐘（工作票 03 的 S3 核對者 2026-10-19 查證；原先「每分鐘 250–300 字」
+     較可能是朗讀的字數，已刪除）。owner 2026-10-19 裁定上限約 450 字，不刪內容；下限 250 字確保五個 h2 區段平均各有約 50 字的實際內容。
+     數字、英文與標點都算一個字元（量法簡單、可重現），研究只計中文字，所以時間只是近似。
+- **R6 Starlight 側欄**：三個群組，依序「專案設計」（專案設計，`design/`）、「學習科學」（導讀＋六篇，順序與文件站相同）、
+  「產品」（產品怎麼用），與首頁入口順序一致（文件站是外部連結，不進側欄）。
   Starlight 頁首的網站標題連到首頁（`base` 根）。側欄只有站內頁面，不放外部連結。
 - **R7 學習科學搬入**：七個 `.mdx` 檔與文件站 `b2d1dc9` 的版本逐字相同，只允許以下改動：
   1. 三處連到〈第一次使用 Mnemo-Card〉的相對連結 `](../../first-use/)` 改為
@@ -88,10 +98,9 @@
      每張有非空 `alt` 與以「圖：」開頭的 `figcaption`。
   4. 文末連到文件站的〈第一次使用 Mnemo-Card〉`first-use/`、〈之後的複習與管理〉`review-and-manage/`、
      〈認識 mnemo-study-cards〉`skills/mnemo-study-cards/`，全部為 `https://banshee0716.github.io/mnemo-card-docs/` 開頭的絕對網址。
-- **R9 搜尋**：Starlight 內建 Pagefind，索引八個 Starlight 頁（導讀、六篇、產品摘要）。**首頁不進索引**。
-  理由：（1）首頁是導覽與摘要，內容都在八頁有更完整的版本，進索引只會讓每個搜尋多一筆重複的摘要結果；
-  （2）首頁的成果數字是需要上下文（測試條件）的句子，單獨出現在搜尋片段裡容易被斷章取義；
-  （3）首頁不是 Starlight 頁，沒有 `data-pagefind-body`，不進索引是預設行為，不需額外設定。
+- **R9 搜尋**：Starlight 內建 Pagefind，索引九個 Starlight 頁（專案設計、導讀、六篇、產品摘要）。**首頁不進索引**。
+  理由：（1）首頁只有導覽，每句都是其他頁的摘要，進索引只會讓搜尋多一筆重複的結果；（2）成果數字在專案設計頁，
+  有完整的測試條件上下文；（3）首頁不是 Starlight 頁，沒有 `data-pagefind-body`，不進索引是預設行為，不需額外設定。
   搜尋框只在 Starlight 頁頁首。
 - **R10 部署**：`.github/workflows/deploy.yml` 照文件站：觸發 push `main` 與 `workflow_dispatch`；`runs-on: ubuntu-24.04`；
   `npm ci` → `npm run build` → `npx playwright install --with-deps chromium` → `npm test`（`CI: true`）全部通過才
@@ -108,7 +117,7 @@
   `package.json` 腳本 `check:public` 執行它。
 - **R12 測試**：Playwright 只用 chromium，`webServer` 為 `npm run build && npm run preview -- --port <port> --ignore-lock`，
   埠預設 4398（`PLAYWRIGHT_PORT` 可改，不與文件站的 4399 相同），`baseURL` 含 `base`。改寫文件站的測試，不照搬：
-  頁面清單 `tests/helpers.ts` 的 `PAGES` 恰為 §0 的九頁；輔助函式（爬連結、axe、主題）可從文件站改寫。
+  頁面清單 `tests/helpers.ts` 的 `PAGES` 恰為 §0 的十頁；輔助函式（爬連結、axe、主題）可從文件站改寫。
 
 ## 2. 限制
 
@@ -120,7 +129,7 @@
 
 規則：
 
-- 網站上（首頁、產品摘要頁、Starlight 標題與描述）關於 Mnemo-Card 的每一句話都要對到下表一個項目，並只能說到該項
+- 網站上（首頁、專案設計頁、產品摘要頁、Starlight 標題與描述）關於 Mnemo-Card 的每一句話都要對到下表一個項目，並只能說到該項
   「可寫的內容」為止；改寫措辭可以，加內容不行。學習科學七頁沿用文件站已過核對的正文，不重審，但不得新增句子。
 - 狀態欄：**已核可**＝owner G1 已明示或內容已在文件站／產品首頁公開；**待 owner 確認**＝Builder 提案，工作票 03 送 owner
   時逐項勾選，沒勾的不上站；**待 owner 提供**＝缺數值或資料，owner 給值前不上站。
@@ -190,25 +199,25 @@
 
 ## 4. 測試接縫
 
-- **S1 建置**：`npm run build` exit 0；`dist/` 恰有九個頁面的 `index.html`（不含 404）與 `dist/pagefind/`。
+- **S1 建置**：`npm run build` exit 0；`dist/` 恰有十個頁面的 `index.html`（不含 404）與 `dist/pagefind/`。
 - **S2 Playwright**：`tests/` 內，對 `npm run preview`（含 `base`）執行，只用 chromium。
-- **S3 白名單核對**：首頁與產品摘要頁的文案（工作票 03 的 `copy/*.md`）以及上站後的頁面文字，由全新工作階段的 opus 子代理
+- **S3 白名單核對**：首頁、專案設計頁與產品摘要頁的文案（工作票 03 的 `copy/*.md`）以及上站後的頁面文字，由全新工作階段的 opus 子代理
   逐句核對，作者不自驗。產出公開報告 `docs/harness/portfolio-site/verification/whitelist-<page>.md`：逐句表格
-  「句子 → W／S／N 項編號 → PASS／FAIL」，另列 §3.4 每一類 PASS／FAIL；首頁另判 R5 第 2 點（每個雙鑽石階段只用表內項目、沒有寫出無出處的研究活動）並查證 R5 第 5 點的閱讀速度出處（作者、年份、數值、默讀或朗讀、單位是漢字還是全部字元；可能是 IReST，Trauzettel-Klosinski & Dietz, 2012，而非 Brysbaert, 2019）。報告只寫網站上的公開句子與項目編號。
-- **S4 線上冒煙**（G7 時，由 owner 授權）：`curl -s -o /dev/null -w '%{http_code}'` 對九頁、`pagefind/pagefind.js`、
+  「句子 → W／S／N 項編號 → PASS／FAIL」，另列 §3.4 每一類 PASS／FAIL；專案設計頁另判 R5a 第 2 點（每個雙鑽石階段只用表內項目、沒有寫出無出處的研究活動）並查證 R5a 第 4 點的閱讀速度出處（作者、年份、數值、默讀或朗讀、單位是漢字還是全部字元；可能是 IReST，Trauzettel-Klosinski & Dietz, 2012，而非 Brysbaert, 2019）。報告只寫網站上的公開句子與項目編號。專案設計頁的句子已在原首頁報告（`verification/whitelist-home.md`，2026-10-19）核對過；搬頁後只核新增或改動的句子，另寫 `verification/whitelist-design.md`；新的導覽首頁全部重核，另寫 `verification/whitelist-home-nav.md`（不改已提交的報告）。
+- **S4 線上冒煙**（G7 時，由 owner 授權）：`curl -s -o /dev/null -w '%{http_code}'` 對十頁、`pagefind/pagefind.js`、
   以及頁面上每個文件站網址都回 200。
 
 ## 5. 驗收條件
 
-- **AC1**（S1）：乾淨 clone 上 `npm ci && npm run build` exit 0；`find dist -name index.html -not -path '*/404/*' | wc -l` 輸出 `9`；
+- **AC1**（S1）：乾淨 clone 上 `npm ci && npm run build` exit 0；`find dist -name index.html -not -path '*/404/*' | wc -l` 輸出 `10`；
   `dist/pagefind/pagefind.js` 存在；依賴版本符合 R1（`package.json` 無 `^`／`~`）。
-- **AC2**：九頁在 `base` 之下回 200、`<html lang="zh-TW">`、`<title>` 非空且符合工作票 03 定稿。（Playwright，全部 `PAGES`）
-- **AC3**：從九頁出發爬所有站內 `href`／`src`，全部回 200、都在 `base` 之下；跨頁錨點對應到存在的 `id`。（Playwright）
-- **AC4**：375px 寬度下九頁都沒有橫向捲動（`scrollWidth <= clientWidth`）。（Playwright）
-- **AC5**：九頁在淺色與深色主題下，axe 沒有 serious 或 critical 違規。（Playwright；首頁以 `localStorage` 的 `starlight-theme` 切換）
+- **AC2**：十頁在 `base` 之下回 200、`<html lang="zh-TW">`、`<title>` 非空且符合工作票 03 定稿。（Playwright，全部 `PAGES`）
+- **AC3**：從十頁出發爬所有站內 `href`／`src`，全部回 200、都在 `base` 之下；跨頁錨點對應到存在的 `id`。（Playwright）
+- **AC4**：375px 寬度下十頁都沒有橫向捲動（`scrollWidth <= clientWidth`）。（Playwright）
+- **AC5**：十頁在淺色與深色主題下，axe 沒有 serious 或 critical 違規。（Playwright；首頁以 `localStorage` 的 `starlight-theme` 切換）
 - **AC6**：介面文字是繁體：Starlight 頁出現「搜尋」且沒有「搜索」；沿用文件站的英文落回字串檢查。（Playwright）
 - **AC7 鍵盤**（Playwright）：
-  1. 首頁：第一次 Tab 聚焦「跳到主要內容」，Enter 後焦點移入 `<main>`；之後連續 Tab 依序走到分支區兩個入口，再到頁尾的 GitHub 連結；
+  1. 首頁：第一次 Tab 聚焦「跳到主要內容」，Enter 後焦點移入 `<main>`；之後連續 Tab 依序走到四個入口連結，再到頁尾的 GitHub 連結；
      每個聚焦中的連結 `outline-style` 不是 `none`（或有可見的 `box-shadow`）。
   2. Starlight 頁：第一次 Tab 聚焦跳轉連結；桌機寬度 Tab 能走到側欄文章連結；手機寬度 Enter 打開選單、Tab 到側欄連結、Esc 關閉；
      能用鍵盤打開搜尋；手機寬度文章目錄能用鍵盤展開。
@@ -217,13 +226,16 @@
   R3 第 1 點：`grep -rnE -e '--mc-[a-z-]+[[:space:]]*:' src | grep -v '^src/styles/tokens.css:'` 沒有輸出（`--mc-*` 只在 `tokens.css` 定義）。
 - **AC9 首頁主題**（Playwright）：`localStorage` 設 `starlight-theme=dark` 時首頁 `data-theme="dark"`；設 `light` 時為 `light`；
   未設時跟隨模擬的 `prefers-color-scheme`。
-- **AC10 首頁結構**（Playwright）：`h1` 恰一個；`main` 內 `h2` 清單**完全等於**工作票 03 定稿的標題、依序；前四個 h2 依序以「探索」「定義」「發展」「交付」開頭；
-  分支區恰有兩個連結，依序指向 `learning-science/`、`product/`；頁面沒有任何指向產品正式站的連結（owner D2）；首頁沒有 `<script src>` 指向站外、
-  沒有站外 `<link rel="stylesheet">`。
+- **AC10 首頁與專案設計頁結構**（Playwright）：
+  1. 首頁：`h1` 恰一個；`main` 內 `h2` 恰四個，文字依序等於工作票 03 定稿（專案設計、學習科學導讀、產品怎麼用、操作文件），
+     每個 `h2` 內恰一個連結，依序指向 `design/`、`learning-science/`、`product/`、`https://banshee0716.github.io/mnemo-card-docs/`；
+     頁面沒有任何指向產品正式站的連結（owner D2）；沒有 `<script src>` 指向站外、沒有站外 `<link rel="stylesheet">`。
+  2. 專案設計頁：h1 為「專案設計」；`.sl-markdown-content` 內 `h2` 清單**完全等於**工作票 03 定稿、依序，前四個依序以「探索」「定義」「發展」「交付」開頭；
+     「繼續讀」恰兩個連結，依序到 `learning-science/`、`product/`；沒有上一篇／下一篇；沒有指向產品正式站的連結。
 - **AC11 首頁不進搜尋**：`grep -c 'data-pagefind-body' dist/index.html` 輸出 `0`；Playwright 在 Starlight 頁搜尋首頁獨有的一句
   （工作票 03 定稿時指定）沒有任何結果指向根路徑。
 - **AC12 搜尋**（Playwright）：搜「檢索練習」有一筆結果路徑（去掉 `#`）完全等於 `learning-science/retrieval-practice/`；
-  搜「認知負荷」對應認知負荷頁；搜工作票 03 指定的一個產品摘要頁詞，有一筆對應 `product/`。
+  搜「認知負荷」對應認知負荷頁；搜工作票 03 指定的一個產品摘要頁詞，有一筆對應 `product/`；搜工作票 03 指定的專案設計頁詞，有一筆對應 `design/`。
 - **AC13 學習科學搬入**：
   1. 對七檔逐一 `diff <(git -C ~/code/mnemo-card-docs show b2d1dc9:src/content/docs/learning-science/<檔>) src/content/docs/learning-science/<檔>`：
      `retrieval-practice`、`self-explanation`、`spaced-practice` 各恰一行不同（R7 第 1 點的連結）；`kli-framework` 恰多一行 `next: false`；
@@ -233,22 +245,28 @@
   3. Playwright：沿用文件站 AC19–AC24 的學習科學斷言並改寫到新站：側欄「學習科學」群組依 R6 順序；各頁 h2 清單鎖定
      （與文件站相同）；參考文獻 3–7 筆且都有外部連結、延伸閱讀 1–2 筆；上一篇／下一篇依 R7（KLI 無下一篇）；
      三篇產品段的〈第一次使用〉連結 `href` 等於文件站絕對網址。
-- **AC14 側欄**（Playwright）：群組依序「學習科學」「產品」；只有站內連結；首頁不在側欄；頁首網站標題連結指向 `base` 根。
+- **AC14 側欄**（Playwright）：群組依序「專案設計」「學習科學」「產品」；只有站內連結；首頁不在側欄；頁首網站標題連結指向 `base` 根。
 - **AC15 產品摘要頁**（Playwright）：恰四張 `<img>`，每張 `alt` 非空、`src` 為 webp、有以「圖：」開頭的 `figcaption`；
   頁內連到文件站的三個連結 `href` 依 R8 第 4 點；沒有上一篇／下一篇；內容區沒有程式碼區塊。
 - **AC16 公開衛生**：`npm run check:public` exit 0、沒有命中；`grep -n "const ALLOWED = \[\];" scripts/check-public.mjs` 有一行；
   `git log --format='%ae%n%ce' | sort -u` 只輸出本儲存庫的 noreply 地址；`git log --all --name-only --format= | grep -iE '\.(pdf|env)$'` 沒有輸出；
   R11 第 2 點：`grep -n "HARNESS_OK = new Set(\['portfolio-site'\])" scripts/check-public.mjs` 恰一行；
   R11 第 4 點：`grep -nxF '[.]env*' .gitignore` 恰一行，且 `git check-ignore -q "$(printf '.%s' env.local)"` exit 0。
-- **AC17 白名單**：S3 的兩份報告（首頁、產品摘要頁）沒有未處理的 FAIL；所有上站句子對到的項目狀態都是「已核可」或 owner 已勾選。
+- **AC17 白名單**：S3 報告（導覽首頁、專案設計頁的新增句、產品摘要頁，以及原首頁報告涵蓋的搬移句）沒有未處理的 FAIL；所有上站句子對到的項目狀態都是「已核可」或 owner 已勾選。
 - **AC18 部署與設定**：工作流符合 R10（閱讀核對：觸發、權限三項、無 secret、測試通過才部署、`base` 一致）；G7 時 push 後部署成功、S4 全部 200。
   R2 設定核對：`grep -c 'lastUpdated: false' astro.config.mjs` 輸出 `1`；`grep -c 'editLink' astro.config.mjs` 輸出 `0`（未設定即不顯示編輯連結）；
   `grep -cE '^[[:space:]]*components:' astro.config.mjs` 輸出 `0`（沒有覆寫元件）。
-- **AC19 閱讀長度**（Playwright）：首頁 `main` 的 `innerText` 去掉所有空白（`/\s/g`）後的字元數在 250–450 之間（R5 第 5 點：中文默讀約每分鐘 390 字，Brysbaert, 2019，450 字約 1.2 分鐘；`h1` 計入，`footer` 與跳到主要內容連結不計入）。
+- **AC19 閱讀長度**（Playwright；字元數都是 `innerText` 去掉所有空白 `/\s/g` 後計）：
+  1. 專案設計頁：h1 加 `.sl-markdown-content` 的字元數在 250–450 之間（R5a 第 4 點：中文默讀約每分鐘 390 字，Brysbaert, 2019，450 字約 1.2 分鐘；不含側欄、頁首、文章目錄、上下篇）。
+  2. 首頁：`main` 的字元數在 60–180 之間（R5 第 4 點；`h1` 計入，`footer` 與跳到主要內容連結不計入）。
 - **AC20 佔位不上站**：`grep -rn '待 owner 提供' src/` 沒有輸出；Playwright：首頁 `footer` 內有一個 `href` 為 `https://github.com/banshee0716` 的連結，
-  `footer` 文字不含「待 owner」（首頁部分屬工作票 04）。九頁都沒有 `mailto:` 連結：寫在 `tests/site.spec.ts` 的 `PAGES` 迴圈內，屬工作票 05（九頁到齊時）。
+  `footer` 文字不含「待 owner」（首頁部分屬工作票 04）。十頁都沒有 `mailto:` 連結：寫在 `tests/site.spec.ts` 的 `PAGES` 迴圈內，屬工作票 05（十頁到齊時）。
 
 ## 6. owner 裁定（2026-10-19，取代原待決清單）
+
+- **首頁改為導覽頁**（owner 2026-10-19，看過雙鑽石首頁定稿後）：產品自己的首頁已介紹功能，作品集首頁只負責連結與引導；
+  一句定位＋四個入口（專案設計、學習科學導讀、產品怎麼用、操作文件）；頁尾不變；仍不連產品正式站。雙鑽石文案原文搬到
+  `design/`（R5a）。頁面總數改為十頁。本條取代下方「首頁方向」一條中關於首頁的部分。
 
 - **D1 網站名稱**：「Mnemo-Card portfolio」（Starlight `title` 與首頁 `<title>`）。
 - **D1′ N1 措辭**：「學習作答的送出請求」。
