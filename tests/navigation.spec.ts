@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { BASE, tabUntil } from './helpers';
+import { BASE, PAGES, tabUntil } from './helpers';
 
 const sidebar = '#starlight__sidebar';
 const articleLink = `${sidebar} a[href="${BASE}learning-science/retrieval-practice/"]`;
@@ -41,49 +41,55 @@ test.describe('側欄（AC14）', () => {
 	});
 });
 
-test.describe('Starlight 頁鍵盤操作（AC7 第 2 點）', () => {
-	test('第一次 Tab 聚焦跳轉連結；Enter 後網址變 #_top，下一次 Tab 停在 main 裡', async ({ page }) => {
-		await page.goto('learning-science/');
-		await page.keyboard.press('Tab');
-		await expect(page.locator(':focus')).toHaveText('跳到內容');
-		await page.keyboard.press('Enter');
-		await expect(page).toHaveURL(/#_top$/);
-		await page.keyboard.press('Tab');
-		expect(await page.evaluate(() => !!document.activeElement?.closest('main'))).toBe(true);
-	});
+/** AC7 第 2 點：九個 Starlight 頁都要跑，不只代表頁。 */
+const STARLIGHT_PAGES = PAGES.filter((p) => p.kind === 'starlight');
+const anySidebarLink = `${sidebar} a`;
 
-	test('桌機寬度下 Tab 能走到側欄的文章連結', async ({ page }) => {
-		await page.setViewportSize({ width: 1280, height: 800 });
-		await page.goto('learning-science/');
-		expect(await tabUntil(page, articleLink)).toBe(true);
-	});
+for (const { path } of STARLIGHT_PAGES) {
+	test.describe(`Starlight 頁鍵盤操作（AC7 第 2 點）：${path}`, () => {
+		test('第一次 Tab 聚焦跳轉連結；Enter 後網址變 #_top，下一次 Tab 停在 main 裡', async ({ page }) => {
+			await page.goto(path);
+			await page.keyboard.press('Tab');
+			await expect(page.locator(':focus')).toHaveText('跳到內容');
+			await page.keyboard.press('Enter');
+			await expect(page).toHaveURL(/#_top$/);
+			await page.keyboard.press('Tab');
+			expect(await page.evaluate(() => !!document.activeElement?.closest('main'))).toBe(true);
+		});
 
-	test('手機寬度下 Enter 打開選單、Tab 到側欄的文章連結、Esc 關閉', async ({ page }) => {
-		await page.setViewportSize({ width: 375, height: 800 });
-		await page.goto('learning-science/');
-		expect(await tabUntil(page, '.sl-menu-button')).toBe(true);
-		await page.keyboard.press('Enter');
-		await expect(page.locator(`${sidebar}:popover-open`)).toHaveCount(1);
-		expect(await tabUntil(page, articleLink, 20)).toBe(true);
-		await page.keyboard.press('Escape');
-		await expect(page.locator(`${sidebar}:popover-open`)).toHaveCount(0);
-	});
+		test('桌機寬度下 Tab 能走到側欄的文章連結', async ({ page }) => {
+			await page.setViewportSize({ width: 1280, height: 800 });
+			await page.goto(path);
+			expect(await tabUntil(page, anySidebarLink)).toBe(true);
+		});
 
-	test('能用鍵盤打開搜尋', async ({ page }) => {
-		await page.setViewportSize({ width: 1280, height: 800 });
-		await page.goto('learning-science/');
-		await page.locator('.pagefind-ui__form').waitFor({ state: 'attached' });
-		expect(await tabUntil(page, 'site-search button[data-open-modal]')).toBe(true);
-		await page.keyboard.press('Enter');
-		await expect(page.locator('site-search dialog[open]')).toHaveCount(1);
-		await expect(page.locator('.pagefind-ui__search-input')).toBeFocused();
-	});
+		test('手機寬度下 Enter 打開選單、Tab 到側欄的文章連結、Esc 關閉', async ({ page }) => {
+			await page.setViewportSize({ width: 375, height: 800 });
+			await page.goto(path);
+			expect(await tabUntil(page, '.sl-menu-button')).toBe(true);
+			await page.keyboard.press('Enter');
+			await expect(page.locator(`${sidebar}:popover-open`)).toHaveCount(1);
+			expect(await tabUntil(page, anySidebarLink, 20)).toBe(true);
+			await page.keyboard.press('Escape');
+			await expect(page.locator(`${sidebar}:popover-open`)).toHaveCount(0);
+		});
 
-	test('手機寬度下文章目錄能用鍵盤展開', async ({ page }) => {
-		await page.setViewportSize({ width: 375, height: 800 });
-		await page.goto('learning-science/retrieval-practice/');
-		expect(await tabUntil(page, 'mobile-starlight-toc summary')).toBe(true);
-		await page.keyboard.press('Enter');
-		await expect(page.locator('mobile-starlight-toc details[open]')).toHaveCount(1);
+		test('能用鍵盤打開搜尋', async ({ page }) => {
+			await page.setViewportSize({ width: 1280, height: 800 });
+			await page.goto(path);
+			await page.locator('.pagefind-ui__form').waitFor({ state: 'attached' });
+			expect(await tabUntil(page, 'site-search button[data-open-modal]')).toBe(true);
+			await page.keyboard.press('Enter');
+			await expect(page.locator('site-search dialog[open]')).toHaveCount(1);
+			await expect(page.locator('.pagefind-ui__search-input')).toBeFocused();
+		});
+
+		test('手機寬度下文章目錄能用鍵盤展開', async ({ page }) => {
+			await page.setViewportSize({ width: 375, height: 800 });
+			await page.goto(path);
+			expect(await tabUntil(page, 'mobile-starlight-toc summary')).toBe(true);
+			await page.keyboard.press('Enter');
+			await expect(page.locator('mobile-starlight-toc details[open]')).toHaveCount(1);
+		});
 	});
-});
+}

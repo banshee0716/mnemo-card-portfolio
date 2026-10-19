@@ -69,7 +69,8 @@ test.describe('AC9：首頁主題', () => {
 	test('localStorage 為 dark', async ({ page }) => {
 		await gotoWithTheme(page, '', 'dark');
 	});
-	test('localStorage 為 light', async ({ page }) => {
+	test('localStorage 為 light（系統偏好先設為深色，證明讀的是 localStorage）', async ({ page }) => {
+		await page.emulateMedia({ colorScheme: 'dark' });
 		await gotoWithTheme(page, '', 'light');
 	});
 	for (const scheme of ['light', 'dark'] as const) {
