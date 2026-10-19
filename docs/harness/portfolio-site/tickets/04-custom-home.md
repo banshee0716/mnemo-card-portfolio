@@ -7,7 +7,7 @@ depends-on: [01, 03]
 spec R3、R4、R5、R9，AC7 第 1 點、AC8–AC11、AC19、AC20。
 
 1. `src/pages/index.astro` 與 `src/styles/home.css`：依 03 定稿文案逐字上站（編號註解不輸出到頁面）；頁尾署名依 R5 第 4 點。只用 `tokens.css` 變數；不載入站外資源。
-2. `tests/home.spec.ts`：AC7 第 1 點、AC8（計算值比對）、AC9、AC10（h2 清單寫死 03 定稿）、AC11（Playwright 部分）、AC19（字數）、AC20（頁尾與佔位）。
+2. `tests/home.spec.ts`：AC7 第 1 點、AC8（計算值比對）、AC9、AC10（h2 清單寫死 03 定稿）、AC11（Playwright 部分）、AC19（字數）、AC20 的首頁部分（頁尾 GitHub 連結、無佔位；九頁 `mailto:` 檢查屬 05）。
 
 ## 測試接縫
 

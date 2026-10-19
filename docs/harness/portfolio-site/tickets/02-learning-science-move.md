@@ -7,7 +7,7 @@ depends-on: [01]
 spec R6、R7、R9，AC7 第 2 點、AC12 前兩項、AC13、AC14（「產品」群組除外）。
 
 1. 從文件站 commit `b2d1dc9` 取七個 `.mdx`（`git -C ~/code/mnemo-card-docs show b2d1dc9:src/content/docs/learning-science/<檔>`），
-   放到 `src/content/docs/learning-science/`，只做 R7 允許的四處改動（三處連結、KLI `next: false`）。
+   放到 `src/content/docs/learning-science/`（取代 01 的暫置導讀頁），只做 R7 允許的四處改動（三處連結、KLI `next: false`）。
 2. `astro.config.mjs` 側欄「學習科學」群組（R6；「產品」群組在 05 加）。
 3. `PAGES` 加七頁；`tests/learning-science.spec.ts` 依 AC13 第 3 點改寫文件站的學習科學斷言；`tests/search.spec.ts` 寫 AC12 前兩項；
    `tests/navigation.spec.ts` 寫 AC7 第 2 點與 AC14（「產品」群組的斷言在 05 補）。
