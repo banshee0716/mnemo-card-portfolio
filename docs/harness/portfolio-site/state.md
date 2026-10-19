@@ -3,10 +3,10 @@
 ```harness
 slug: portfolio-site
 slice: "1"
-stage: ACCEPTED
+stage: RELEASED
 holder: none
 tier: LOW
-gates_passed: [G1, G2A, G2B, G4, G5]
+gates_passed: [G1, G2A, G2B, G4, G5, G7]
 open_p0p1: 0
 gate: G6A
 round: 1
@@ -82,3 +82,5 @@ round: 1
 | 9 | P3 | 工作票 01 變異測試留下暫存分支 | 測試後刪除暫存分支，並確認 `git branch -a` 不再列出 |
 | 10 | P3 | 工作票 01 沒有 Starlight 頁時 Pagefind 可能不建索引 | 01 允許一頁暫置 Starlight 頁（學習科學導讀），02 以正式檔取代 |
 - Owner: 2026-10-19 G6A/G6B 豁免（「應該不用Ｇ６，直接處理Ｇ７」）；預審發現 G6-P2-1、P3-1..3 轉為後續，未修。owner 授權 Claude 建立 GitHub 公開儲存庫並推送（G7）。
+- G7 2026-10-19：owner 推送 main（8f1e2bd）；Pages 工作流 run 39217827989 首跑 build 綠（163 passed）但 deploy 被 github-pages 環境分支規則拒（建立時預設 master）→ 環境規則改為 main、重跑 build／deploy 皆 success；S4 十頁＋pagefind.js 全部 200，正式首頁含 title 與頁尾 GitHub 連結。
+- 後續：文件站刪除學習科學區（另開切片，不留轉址）；擴寫專案設計頁（另開切片）；G6-P2-1 首頁焦點斷言、P3-1..3。
