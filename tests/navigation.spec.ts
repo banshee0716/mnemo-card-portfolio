@@ -16,7 +16,7 @@ const LEARNING_SCIENCE_LINKS: [string, string][] = [
 ];
 
 test.describe('側欄（AC14）', () => {
-	test('「學習科學」群組依 R6 順序', async ({ page }) => {
+	test('三個群組依序，「專案設計」四項（AC14′）、「學習科學」依 R6、「產品」一項', async ({ page }) => {
 		await page.goto('learning-science/');
 		const groups = page.locator(`${sidebar} .top-level > li > details`);
 		await expect(groups.locator('> summary')).toHaveText(['專案設計', '學習科學', '產品']);
@@ -45,7 +45,7 @@ test.describe('側欄（AC14）', () => {
 	});
 });
 
-/** AC7 第 2 點：九個 Starlight 頁都要跑，不只代表頁。 */
+/** AC7 第 2 點：所有 Starlight 頁（PAGES 中 kind 為 starlight 者）都要跑，不只代表頁。 */
 const STARLIGHT_PAGES = PAGES.filter((p) => p.kind === 'starlight');
 const anySidebarLink = `${sidebar} a`;
 

@@ -3,12 +3,12 @@
 ```harness
 slug: design-expansion
 slice: "1"
-stage: BUILDING
-holder: builder
+stage: ACCEPTANCE
+holder: owner
 tier: LOW
-gates_passed: [G1, G2A, G2B]
+gates_passed: [G1, G2A, G2B, G4]
 open_p0p1: 0
-gate: G4
+gate: G5
 round: 0
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
@@ -19,13 +19,13 @@ round: 0
 - 意圖：`intent.md`（owner G1 2026-10-19）。文案：`copy/problem.md`、`copy/decisions.md`、`copy/engineering.md`
   （owner 2026-10-19 在對話中確認內容）。逐段出處保存在本機未追蹤的 `private/`（`.gitignore`），不提交。
 - spec：`spec.md`；工作票：`tickets/01`–`03`。
-- what is left：BUILDING 完成（工作票 01–03）→ G4（全新工作階段、乾淨 clone） → G5（owner 驗收）→ 一輪 Codex（G6A＋G6B）→ G7（推送需 owner 授權）。
+- what is left：G5（owner 驗收三篇新頁、總覽頁「繼續讀」、全站黑體標題，並確認總覽頁上限 500）→ 一輪 Codex（G6A＋G6B）→ G7（推送需 owner 授權） → G5（owner 驗收）→ 一輪 Codex（G6A＋G6B）→ G7（推送需 owner 授權）。
 - blockers：無。
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-19，對話中逐項裁定，含 16 題拷問）
 - [x] G2A＋G2B spec 與工作票合審（fresh opus，2026-10-19，一輪合審，APPROVE AFTER FIXES；修正已套用，不複審）
-- [ ] G4 verified
+- [x] G4 verified（2026-10-19；全新工作階段驗證者在乾淨 clone `378c7a4` 上 VERIFIED、無 FAIL：214 passed、13 頁、check:public 乾淨；變異抽查四項皆紅；`verification/g4-verifier.md`）
 - [ ] G5 accepted by human
 - [ ] G6A＋G6B 一輪 Codex
 - [ ] G7 released
@@ -61,6 +61,7 @@ round: 0
 - Builder: 工作票 03 完成：S3 核對（全新 opus，`verification/whitelist-design-pages.md`）首輪 PASS 153／FAIL 5，F1–F9 全 PASS，七筆書目與 Crossref 相符；
   5 項 FAIL（L2「建構性檢索」標籤、L3「影響都不大」措辭、L1 缺「初學者」條件、E6 缺測試條件、E11 的 1.57 倍是讀取量不是時間）已改 copy、`.mdx` 與 spec §3；
   重核 5 句全 PASS、AC22 PASS、AC17′ 滿足。修正後量測：設計決策 3,712、工程實作 3,344。
+- Builder: G4 不阻擋的建議：側欄測試改名涵蓋三個群組、AC7 註解改為不寫死頁數（已處理）；「本機 shell 的 grep 是包裝函式，驗證時用 `command grep`」只記在此，不改 spec；AC18 部署與 S4 留待 G7。
 - Builder: 本切片的白名單沿用 portfolio-site spec §3 的規則與編號（W、N、S、F），新項目在本切片 spec 以新編號列出。
 
 ## G2A＋G2B 合審紀錄（2026-10-19）
