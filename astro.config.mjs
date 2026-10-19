@@ -36,6 +36,10 @@ export default defineConfig({
 						{ label: 'KLI 框架', slug: 'learning-science/kli-framework' },
 					],
 				},
+				{
+					label: '產品',
+					items: [{ label: '產品怎麼用', slug: 'product' }],
+				},
 			],
 		}),
 	],

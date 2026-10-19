@@ -3,9 +3,6 @@ import { expect, type Page } from '@playwright/test';
 
 export const BASE = '/mnemo-card-portfolio/';
 
-/** 尚未建立的頁面（工作票 05 建立 product/ 後必須清空此清單）：AC3 暫不要求回 200。 */
-export const PENDING_PAGES: string[] = [`${BASE}product/`];
-
 /** 測試涵蓋的頁面（相對於 base）。後續工作票在此加入新頁面；kind 區分自訂首頁與 Starlight 頁。 */
 export const PAGES: { path: string; title: string; kind: 'home' | 'starlight' }[] = [
 	{ path: '', title: 'Mnemo-Card portfolio', kind: 'home' },
@@ -17,6 +14,7 @@ export const PAGES: { path: string; title: string; kind: 'home' | 'starlight' }[
 	{ path: 'learning-science/self-explanation/', title: '自我解釋：為什麼要問自己「這一步為什麼成立」？', kind: 'starlight' },
 	{ path: 'learning-science/cognitive-load/', title: '認知負荷理論：為什麼有些教材讓人越看越亂？', kind: 'starlight' },
 	{ path: 'learning-science/kli-framework/', title: 'KLI 框架：為什麼要先想清楚「學會」是什麼意思？', kind: 'starlight' },
+	{ path: 'product/', title: '產品怎麼用', kind: 'starlight' },
 ];
 
 export type Theme = 'light' | 'dark';
@@ -68,7 +66,7 @@ export async function expectInternalLinksOk(page: Page, path: string) {
 	const brokenDeepLinks: string[] = [];
 	for (const url of internal) {
 		const res = await page.request.get(url);
-		if (res.status() !== 200 && !PENDING_PAGES.includes(new URL(url).pathname)) failures.push(`${res.status()} ${url}`);
+		if (res.status() !== 200) failures.push(`${res.status()} ${url}`);
 		// 跨頁錨點（other-page/#段落）要對應到目標頁上存在的 id。
 		const ids = fragments.get(url);
 		if (ids && res.status() === 200) {

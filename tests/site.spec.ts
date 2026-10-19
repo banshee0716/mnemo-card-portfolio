@@ -23,6 +23,11 @@ for (const { path, title, kind } of PAGES) {
 			await expectInternalLinksOk(page, path);
 		});
 
+		test('AC20：沒有 mailto: 連結', async ({ page }) => {
+			await page.goto(path);
+			await expect(page.locator('a[href^="mailto:" i]')).toHaveCount(0);
+		});
+
 		test('AC4：375px 寬度沒有橫向捲動', async ({ page }) => {
 			await expectNoHorizontalScroll(page, path);
 		});

@@ -4,7 +4,7 @@ import { BASE, tabUntil } from './helpers';
 const sidebar = '#starlight__sidebar';
 const articleLink = `${sidebar} a[href="${BASE}learning-science/retrieval-practice/"]`;
 
-/** R6：側欄「專案設計」「學習科學」群組的順序。「產品」群組的斷言在工作票 05 補。 */
+/** R6：側欄「專案設計」「學習科學」群組的順序。「產品」群組。 */
 const LEARNING_SCIENCE_LINKS: [string, string][] = [
 	['導讀', ''],
 	['檢索練習', 'retrieval-practice/'],
@@ -19,9 +19,11 @@ test.describe('側欄（AC14）', () => {
 	test('「學習科學」群組依 R6 順序', async ({ page }) => {
 		await page.goto('learning-science/');
 		const groups = page.locator(`${sidebar} .top-level > li > details`);
-		await expect(groups.locator('> summary')).toHaveText(['專案設計', '學習科學']);
+		await expect(groups.locator('> summary')).toHaveText(['專案設計', '學習科學', '產品']);
 		await expect(groups.nth(0).locator('a')).toHaveText(['專案設計']);
 		await expect(groups.nth(0).locator('a')).toHaveAttribute('href', `${BASE}design/`);
+		await expect(groups.nth(2).locator('a')).toHaveText(['產品怎麼用']);
+		await expect(groups.nth(2).locator('a')).toHaveAttribute('href', `${BASE}product/`);
 		const links = groups.nth(1).locator('a');
 		await expect(links).toHaveText(LEARNING_SCIENCE_LINKS.map(([label]) => label));
 		for (const [i, [, slug]] of LEARNING_SCIENCE_LINKS.entries()) {

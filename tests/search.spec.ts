@@ -6,6 +6,7 @@ const SEARCHES: [string, string][] = [
 	['檢索練習', 'learning-science/retrieval-practice/'],
 	['認知負荷', 'learning-science/cognitive-load/'],
 	['雙鑽石', 'design/'],
+	['匯入', 'product/'],
 ];
 
 for (const [query, path] of SEARCHES) {

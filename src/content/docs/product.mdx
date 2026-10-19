@@ -1,0 +1,54 @@
+---
+title: 產品怎麼用
+description: Mnemo-Card 的主要功能摘要：一張卡怎麼學、牌組與複習排程、匯入匯出與 AI 產卡技能。完整操作步驟在文件站。
+prev: false
+next: false
+---
+
+import { Image } from 'astro:assets';
+import home from '../../assets/screenshots/first-use-02-home.png';
+import studyBack from '../../assets/screenshots/first-use-06-study-back.png';
+import scheduled from '../../assets/screenshots/first-use-08-scheduled-deck.png';
+import importPage from '../../assets/screenshots/review-04-import.png';
+
+## 一張卡怎麼學
+
+讀完正面後翻面讀概述，照「檢索提示」憑記憶說出要點再對照，接著照「自我解釋提示」用自己的話和例子說明；最後依對照前想出多少，評 1 到 5 的熟悉度。 學習畫面一次一張卡，可以只用鍵盤操作。
+
+<figure class="shot">
+	<Image src={studyBack} alt="學習畫面背面：卡片顯示背面概述，下方有「檢索提示」與「自我解釋提示」兩個區塊。" width={1400} format="webp" />
+	<figcaption>圖：學習畫面背面的概述與兩個提示。</figcaption>
+</figure>
+
+## 牌組與複習排程
+
+一副牌組整理一個主題，用四種卡片拆開：基礎概念卡、深入解析卡、關聯整合卡、範例應用卡。
+
+<figure class="shot">
+	<Image src={home} alt="第一次登入後的首頁：左側側欄有四個圖示項目，主畫面是「開始你的第一組知識」卡片，下方有「建立第一副牌組」按鈕。" width={1400} format="webp" />
+	<figcaption>圖：第一次登入後的首頁。</figcaption>
+</figure>
+
+每副牌組可排定兩種固定的複習日程：「遺忘曲線」依序隔 1、3、7、14、30 天，共 5 次；「每週等間隔」每 7 天一次，共 8 次。 日程固定，不依評分調整。
+
+<figure class="shot">
+	<Image src={scheduled} alt="建立排程後的牌組上方：顯示「排程中・下次：10/20」、鎖頭圖示加「遺忘曲線」，以及「已完成 0/5」。" width={1400} format="webp" />
+	<figcaption>圖：建立排程後的牌組，顯示下次複習日期與進度。</figcaption>
+</figure>
+
+## 匯入、匯出與 AI 產卡技能
+
+牌組可以用 Markdown 檔匯入與匯出；匯入前先預覽哪些卡可匯入、哪些有警告。 AI 技能 mnemo-study-cards 協助把一份來源整理成可匯入的四種卡片；理解、回想與解釋仍由學習者自己完成。
+
+<figure class="shot">
+	<Image src={importPage} alt="匯入頁：上方是來源、預覽、確認、結果四個步驟，下方是拖入檔案區、貼上文字區與「看格式說明」。" width={1400} format="webp" />
+	<figcaption>圖：匯入頁的四個步驟：來源、預覽、確認、結果。</figcaption>
+</figure>
+
+## 完整操作說明
+
+操作步驟見文件站：
+
+- [第一次使用 Mnemo-Card](https://banshee0716.github.io/mnemo-card-docs/first-use/)
+- [之後的複習與管理](https://banshee0716.github.io/mnemo-card-docs/review-and-manage/)
+- [認識 mnemo-study-cards](https://banshee0716.github.io/mnemo-card-docs/skills/mnemo-study-cards/)
