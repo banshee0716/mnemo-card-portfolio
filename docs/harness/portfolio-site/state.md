@@ -4,7 +4,7 @@
 slug: portfolio-site
 slice: "1"
 stage: INTENT_APPROVED
-holder: none
+holder: reviewer
 tier: LOW
 gates_passed: [G1]
 open_p0p1: 0
