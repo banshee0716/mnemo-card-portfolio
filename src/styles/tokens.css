@@ -1,0 +1,43 @@
+/*
+ * 品牌變數的唯一定義處（spec R3）：顏色、字型、圓角。
+ * 首頁（home.css）與 Starlight 頁（custom.css）都從這裡取值；其他檔案不得再定義 --mc-*。
+ * 預設（無 data-theme）為深色，與 Starlight 的預設一致。
+ */
+:root {
+	--mc-font-body: 'Noto Sans TC Variable', 'Noto Sans TC', system-ui, sans-serif;
+	--mc-font-heading: 'Noto Serif TC Variable', 'Noto Serif TC', serif;
+	--mc-radius: 0.75rem;
+	--mc-radius-sm: 0.5rem;
+
+	--mc-accent-low: #00264f;
+	--mc-accent: #0071e3;
+	--mc-accent-high: #66b0ff;
+	--mc-on-accent: #ffffff;
+	--mc-surface: #1c1d21;
+	--mc-active-bg: rgba(102, 176, 255, 0.12);
+	--mc-active-fg: #66b0ff;
+	--mc-muted: var(--sl-color-gray-2, #a0a3ab);
+
+	--mc-bg: #17181c;
+	--mc-text: #eceef2;
+	--mc-text-muted: #a0a3ab;
+	--mc-border: #353840;
+	--mc-link: #66b0ff;
+}
+
+:root[data-theme='light'] {
+	--mc-accent-low: #d9eafc;
+	--mc-accent: #0071e3;
+	--mc-accent-high: #004a99;
+	--mc-on-accent: #ffffff;
+	--mc-surface: #ffffff;
+	--mc-active-bg: #eef5fd;
+	--mc-active-fg: #004a99;
+	--mc-muted: var(--sl-color-gray-3, #545861);
+
+	--mc-bg: #ffffff;
+	--mc-text: #1c1d21;
+	--mc-text-muted: #545861;
+	--mc-border: #ececee;
+	--mc-link: #004a99;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "mnemo-card-portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "playwright test",
+    "astro": "astro",
+    "check:public": "node scripts/check-public.mjs"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "0.42.6",
+    "@fontsource-variable/noto-sans-tc": "5.3.1",
+    "@fontsource-variable/noto-serif-tc": "5.3.1",
+    "astro": "7.3.8",
+    "sharp": "0.35.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.64.0"
+  }
+}

@@ -3,8 +3,8 @@
 ```harness
 slug: portfolio-site
 slice: "1"
-stage: PLAN_APPROVED
-holder: none
+stage: BUILDING
+holder: builder
 tier: LOW
 gates_passed: [G1, G2A, G2B]
 open_p0p1: 0
@@ -43,6 +43,8 @@ round: 1
 - Builder: 首頁不進 Pagefind 索引（理由見 spec R9）。
 - Builder: 首頁閱讀長度預算＝`main` 去掉空白後 250–450 字，`h1` 計入、頁尾不計入（spec R5 第 5 點；上限依 owner 2026-10-19 裁定放寬到約 1.5 分鐘；下限讓五個區段各有約 50 字）。
 - Builder: 首頁分支只留學習科學導讀與產品摘要兩個入口（owner 只列這兩個）；文件站由產品摘要頁連過去。
+- Builder: 工作票 01 的 `PAGES` 項目多一個 `kind: 'home' | 'starlight'` 欄位（理由：首頁沒有搜尋框，AC6 的「搜尋」檢查只適用 Starlight 頁；後續票沿用）。
+- Builder: `tokens.css` 除 spec R3 列的主色外，另定義首頁用的 `--mc-bg`、`--mc-text`、`--mc-text-muted`、`--mc-border`、`--mc-link`、`--mc-on-accent`（理由：首頁不得出現色碼字面值，AC8）。
 - Builder: 學習科學網址沿用文件站的 `learning-science/<slug>/`，文內頁間相對連結不必改；摘要頁 slug `product/`。
 
 ## G2A＋G2B 合審紀錄（2026-10-19）
