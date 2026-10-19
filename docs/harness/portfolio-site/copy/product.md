@@ -1,6 +1,6 @@
 # 產品摘要頁文案（工作票 03）
 
-- 狀態：Builder 草稿，待 S3 白名單核對與 owner 定稿。
+- 狀態：owner 定稿（G5 2026-10-19 接受）。原為 Builder 草稿；S3 白名單核對見 `verification/whitelist-product.md`。
 - 路徑：`product/`；前言 `title: 產品怎麼用`、`prev: false`、`next: false`；`description`：「Mnemo-Card 的主要功能摘要：一張卡怎麼學、牌組與複習排程、匯入匯出與 AI 產卡技能。完整操作步驟在文件站。」<!-- W3、W2、W5、W6、W7、R8 -->
 - 字數：正文 464 字（標題、h2、內文、連結文字、「圖：」說明計入；`alt`、前言 description、`[S1]` 等佔位記號不計入；量法同 AC19，去掉所有空白）。範圍 200–500（spec R8）。含 `alt` 為 655 字。
 - 標記：每句句尾的 `<!-- 項目 -->` 是 spec §3 的白名單編號，不輸出到頁面。`<!-- R8 -->` 標的是只做導覽、不陳述產品事實的句子。

@@ -1,5 +1,6 @@
 # 專案設計頁文案（工作票 03）
 
+- 狀態：owner 定稿（G5 2026-10-19 接受）；S3 白名單核對見 `verification/whitelist-design.md`。
 - 來源：原首頁雙鑽石文案（S3 已核對，`verification/whitelist-home.md` 與 2026-10-19 複核），依 owner 2026-10-19 裁定原文搬到本頁，**措辭不變**。
 - 路徑：`design/`（Starlight 頁）；前言 `title: 專案設計`、`prev: false`、`next: false`；
   `description`：「用雙鑽石的四個階段整理 Mnemo-Card：探索、定義、發展、交付。」<!-- W16（新句，待 S3） -->

@@ -3,10 +3,10 @@
 ```harness
 slug: portfolio-site
 slice: "1"
-stage: VERIFIED
-holder: none
+stage: ACCEPTED
+holder: reviewer
 tier: LOW
-gates_passed: [G1, G2A, G2B, G4]
+gates_passed: [G1, G2A, G2B, G4, G5]
 open_p0p1: 0
 gate: G6A
 round: 1
@@ -17,15 +17,15 @@ round: 1
   由 spec 的公開白名單（§3）與 `check:public` 把關。
 - branch：`main`（尚未建立 GitHub 遠端；推送與遠端建立由 owner 執行）
 - 意圖：`intent.md`（owner G1 2026-10-19）。規格：`spec.md`。工作票：`tickets/01`–`06`（06 檔名 `06-ten-page-closeout.md`）。
-- what is left（G4 後）：下一步 G5（owner 驗收，同時確認 copy/ 文案定稿）→ G6A＋G6B 一輪 Codex → G7（owner 建遠端、推送、Pages）。舊紀錄：G2 已過（修正已套用，依 owner 輕量流程不複審）→ BUILDING：工作票 01 起；03 可與 01、02 平行。LOW 無 G3；下一個審查閘門 G6A（與 G6B 合一輪 Codex），之前先過 G4、G5。
+- what is left（G5 後）：G6A＋G6B 一輪 Codex（交接 `handoff-g6.md`；holder reviewer）→ 依結果 FIXING 或 FINAL_APPROVED → G7（owner 建遠端、推送、Pages）。舊紀錄：G2 已過（修正已套用，依 owner 輕量流程不複審）→ BUILDING：工作票 01 起；03 可與 01、02 平行。LOW 無 G3；下一個審查閘門 G6A（與 G6B 合一輪 Codex），之前先過 G4、G5。
 - blockers：無（作者姓名已由 owner 裁定不放，見 § Decisions by owner）。
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-19，對話中逐項裁定）
 - [x] G2A＋G2B spec 與工作票合審（fresh opus，2026-10-19，一輪合審，APPROVE AFTER FIXES；修正已套用，不複審）
 - [x] G4 verified（2026-10-19；乾淨 clone 證據 `evidence/g4.md`，測試的提交 `8d6dfca`；全新工作階段驗證者 VERIFIED、無 FAIL，`verification/g4-verifier.md`；不阻擋的建議已處理，見 § Decisions by Builder）
-- [ ] G5 accepted by human
-- [ ] G6A＋G6B 一輪 Codex
+- [x] G5 accepted by human（2026-10-19；首頁改版 `c2c66f2` 經 owner 確認，見 § Decisions by owner）
+- [ ] G6A＋G6B 一輪 Codex（round 1；交接 `handoff-g6.md`，預審發現與處置記在該檔）
 - [ ] G7 released（owner 建立遠端、推送 main、Pages 設定）
 
 ## Decisions by owner（2026-10-19，經 coordinator 轉達）
@@ -38,9 +38,11 @@ round: 1
 - Owner: 頁尾不放作者姓名（2026-10-19）：頁尾只有 GitHub 連結 https://github.com/banshee0716，連結文字「GitHub：banshee0716」；不放電子郵件；取代 W12 原「姓名＋連結」，spec W12／D4／R5 第 3 點／AC20 與 copy/home.md 已同步。
 - Owner: 首頁改為導覽頁（2026-10-19，看過雙鑽石首頁定稿後）：產品自己的首頁已介紹功能，作品集首頁只負責連結與引導——一句定位＋四個入口（專案設計、學習科學導讀、產品怎麼用、操作文件＝文件站根目錄），頁尾不變，仍不連產品正式站；已核對的雙鑽石文案原文搬到新的專案設計頁；總頁數改為十頁。
 - Owner: 2026-10-19 G5 — all pages accepted except home visuals; home restyled, awaiting owner re-check.
+- Owner: 2026-10-19 G5 accepted (home restyle c2c66f2 approved: 「這一版很好」)。copy/ 三檔文案同時視為 owner 定稿（檔頭已註記）。
+- 後續：owner 之後想擴寫「專案設計」頁，另開新切片處理（不屬本切片）。
 
 ## Decisions by Builder
-- Builder: G4 驗證者的不阻擋建議已處理：AC7 的 Starlight 鍵盤測試改為九頁迴圈；AC12 產品頁詞記入 copy/product.md；AC9 的 light 測試先模擬系統深色；過時的決定標註「已取代」。copy/ 檔頭的「Builder 草稿」維持原樣，由 owner 在 G5 一併確認文案定稿。
+- Builder: G4 驗證者的不阻擋建議已處理：AC7 的 Starlight 鍵盤測試改為九頁迴圈；AC12 產品頁詞記入 copy/product.md；AC9 的 light 測試先模擬系統深色；過時的決定標註「已取代」。copy/ 檔頭的「Builder 草稿」維持原樣，由 owner 在 G5 一併確認文案定稿。【已處理：owner G5 2026-10-19 接受，三檔檔頭已註記 owner 定稿】
 - Builder: spec §3.1 W16 範圍改為涵蓋導覽首頁的定位句與四個入口說明句、專案設計頁的 description（及原有的專案設計頁引導句、雙鑽石句、「繼續讀」說明句），可概括 W1–W10、N1、N2 與 S1–S4；全是 owner 已核可項目，沒有新的公開說法。依 S3（`verification/whitelist-home-nav.md`）對「用四張畫面摘要主要功能。」的 FAIL 所提修法；文案不改。
 - Builder: 專案設計頁路徑 `design/`、標題「專案設計」、Starlight 頁（有側欄與搜尋）、`prev`／`next` 皆 false；側欄三群組依序「專案設計」「學習科學」「產品」，與首頁入口順序一致。由工作票 04 建置（與導覽首頁同票）。
 - Builder: 導覽首頁字數 60–180（約 28 秒內掃完，spec R5 第 4 點）；原 250–450 改套用在專案設計頁（R5a 第 4 點）。定稿草稿：首頁 169 字、專案設計頁 434 字（標題由「Mnemo-Card portfolio」改為「專案設計」，少 16 字）。
