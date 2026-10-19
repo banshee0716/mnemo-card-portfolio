@@ -15,7 +15,6 @@ export default defineConfig({
 			},
 			customCss: [
 				'@fontsource-variable/noto-sans-tc',
-				'@fontsource-variable/noto-serif-tc',
 				'./src/styles/custom.css',
 			],
 			lastUpdated: false,

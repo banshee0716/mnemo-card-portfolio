@@ -57,7 +57,7 @@ const BINARY_EXCLUDES = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'ico', 'woff', 'wo
 );
 
 const HARNESS_PATH = /docs\/harness\/([a-z0-9-]+)\//gi;
-const HARNESS_OK = new Set(['portfolio-site']);
+const HARNESS_OK = new Set(['portfolio-site', 'design-expansion']);
 const PATH_REF = /([a-z0-9_./-]+\.(?:tsx?|jsx?|mjs|md|sql|json)):[0-9]/gi;
 
 const EMAIL = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/gi;

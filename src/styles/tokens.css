@@ -5,7 +5,7 @@
  */
 :root {
 	--mc-font-body: 'Noto Sans TC Variable', 'Noto Sans TC', system-ui, sans-serif;
-	--mc-font-heading: 'Noto Serif TC Variable', 'Noto Serif TC', serif;
+	--mc-font-heading: var(--mc-font-body);
 	--mc-radius: 0.75rem;
 	--mc-radius-sm: 0.5rem;
 

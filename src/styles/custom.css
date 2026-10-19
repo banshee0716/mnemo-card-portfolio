@@ -1,12 +1,12 @@
 /*
  * Mnemo-Card portfolio 的 Starlight 頁樣式。只覆寫 Starlight 的 CSS 變數與外觀，不覆寫元件（spec R2）。
  * Starlight 的樣式都在 @layer starlight.* 裡，這裡的未分層規則會優先套用。
- * 視覺參考：產品官網首頁（藍色品牌方塊、明體標題、圓角卡片）與常見文件站的輕量側欄與目錄。
+ * 視覺參考：產品官網首頁（藍色品牌方塊、圓角卡片）與常見文件站的輕量側欄與目錄。
  */
 
 @import './tokens.css';
 
-/* ---------- 字型（spec R3）：內文 Noto Sans TC、標題 Noto Serif TC ---------- */
+/* ---------- 字型（spec R3）：內文與標題都用 Noto Sans TC（owner 2026-10-19） ---------- */
 :root {
 	--sl-font: 'Noto Sans TC Variable', 'Noto Sans TC';
 }
@@ -43,7 +43,7 @@
 	}
 }
 
-/* 頁面標題：明體、最大 */
+/* 頁面標題：最大 */
 h1#_top {
 	font-family: var(--mc-font-heading);
 	font-size: var(--sl-text-h1);
@@ -52,7 +52,7 @@ h1#_top {
 	line-height: 1.3;
 }
 
-/* 段落標題：明體，上方以細線分節 */
+/* 段落標題：上方以細線分節 */
 .sl-markdown-content h2 {
 	font-family: var(--mc-font-heading);
 	font-weight: 700;
@@ -243,7 +243,7 @@ starlight-toc a[aria-current='true'] {
 	border-color: var(--sl-color-accent);
 }
 
-/* ---------- 首頁 hero：與產品官網一致的明體大標與膠囊按鈕 ---------- */
+/* ---------- 首頁 hero：大標與膠囊按鈕 ---------- */
 .hero {
 	max-width: 45rem;
 	margin-inline: auto;
