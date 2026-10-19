@@ -19,7 +19,7 @@ round: 0
 - 意圖：`intent.md`（owner G1 2026-10-19）。文案：`copy/problem.md`、`copy/decisions.md`、`copy/engineering.md`
   （owner 2026-10-19 在對話中確認內容）。逐段出處保存在本機未追蹤的 `private/`（`.gitignore`），不提交。
 - spec：`spec.md`；工作票：`tickets/01`–`03`。
-- what is left：BUILDING（工作票 01、02 完成；03 S3 核對）→ G4 → G5（owner 驗收）→ 一輪 Codex（G6A＋G6B）→ G7（推送需 owner 授權）。
+- what is left：BUILDING 完成（工作票 01–03）→ G4（全新工作階段、乾淨 clone） → G5（owner 驗收）→ 一輪 Codex（G6A＋G6B）→ G7（推送需 owner 授權）。
 - blockers：無。
 
 ## Gates
@@ -58,6 +58,9 @@ round: 0
   側欄改名、`pagefind: false`）。`npm test` 214 passed；`dist/` 13 頁。
 - Builder: AC6 的英文落回字串比對改為不比對後面接「.字母」的寫法（`Next` 不比對 `Next.js`）：工程實作頁內文的技術名稱被誤判為介面字串；
   檢查範圍不縮小（Starlight 標題錨點的英文字串也在內文區）。
+- Builder: 工作票 03 完成：S3 核對（全新 opus，`verification/whitelist-design-pages.md`）首輪 PASS 153／FAIL 5，F1–F9 全 PASS，七筆書目與 Crossref 相符；
+  5 項 FAIL（L2「建構性檢索」標籤、L3「影響都不大」措辭、L1 缺「初學者」條件、E6 缺測試條件、E11 的 1.57 倍是讀取量不是時間）已改 copy、`.mdx` 與 spec §3；
+  重核 5 句全 PASS、AC22 PASS、AC17′ 滿足。修正後量測：設計決策 3,712、工程實作 3,344。
 - Builder: 本切片的白名單沿用 portfolio-site spec §3 的規則與編號（W、N、S、F），新項目在本切片 spec 以新編號列出。
 
 ## G2A＋G2B 合審紀錄（2026-10-19）
