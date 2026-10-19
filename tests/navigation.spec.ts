@@ -20,8 +20,12 @@ test.describe('側欄（AC14）', () => {
 		await page.goto('learning-science/');
 		const groups = page.locator(`${sidebar} .top-level > li > details`);
 		await expect(groups.locator('> summary')).toHaveText(['專案設計', '學習科學', '產品']);
-		await expect(groups.nth(0).locator('a')).toHaveText(['專案設計']);
-		await expect(groups.nth(0).locator('a')).toHaveAttribute('href', `${BASE}design/`);
+		// design-expansion AC14′：「專案設計」群組恰四項。
+		const designLinks = groups.nth(0).locator('a');
+		await expect(designLinks).toHaveText(['專案設計', '問題定義', '設計決策', '工程實作']);
+		for (const [i, p] of ['design/', 'design/problem/', 'design/decisions/', 'design/engineering/'].entries()) {
+			await expect(designLinks.nth(i)).toHaveAttribute('href', `${BASE}${p}`);
+		}
 		await expect(groups.nth(2).locator('a')).toHaveText(['產品怎麼用']);
 		await expect(groups.nth(2).locator('a')).toHaveAttribute('href', `${BASE}product/`);
 		const links = groups.nth(1).locator('a');

@@ -7,6 +7,10 @@ const SEARCHES: [string, string][] = [
 	['認知負荷', 'learning-science/cognitive-load/'],
 	['雙鑽石', 'design/'],
 	['匯入', 'product/'],
+	// design-expansion AC12′
+	['知識組件', 'design/decisions/'],
+	['技術選型', 'design/engineering/'],
+	['知識管理工具', 'design/problem/'],
 ];
 
 for (const [query, path] of SEARCHES) {

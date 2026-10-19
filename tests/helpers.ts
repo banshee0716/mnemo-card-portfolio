@@ -7,6 +7,9 @@ export const BASE = '/mnemo-card-portfolio/';
 export const PAGES: { path: string; title: string; kind: 'home' | 'starlight' }[] = [
 	{ path: '', title: 'Mnemo-Card portfolio', kind: 'home' },
 	{ path: 'design/', title: '專案設計', kind: 'starlight' },
+	{ path: 'design/problem/', title: '問題定義：學習者真正卡在哪裡', kind: 'starlight' },
+	{ path: 'design/decisions/', title: '設計決策：從研究建議到產品功能', kind: 'starlight' },
+	{ path: 'design/engineering/', title: '工程實作：技術選型與工程抉擇', kind: 'starlight' },
 	{ path: 'learning-science/', title: '學習科學導讀', kind: 'starlight' },
 	{ path: 'learning-science/retrieval-practice/', title: '檢索練習：為什麼「試著想起來」也是一種學習？', kind: 'starlight' },
 	{ path: 'learning-science/spaced-practice/', title: '間隔練習：為什麼不要把複習全部擠在同一天？', kind: 'starlight' },
@@ -162,7 +165,8 @@ export async function expectTraditionalUi(page: Page, path: string, kind: 'home'
 		}
 		return parts.join('\n');
 	});
-	const found = ENGLISH_FALLBACKS.filter((s) => new RegExp(`\\b${s}\\b`).test(uiText));
+	// 後面接「.字母」的是技術名稱（例如工程實作頁的 Next.js），不是落回英文的介面字串（design-expansion 工作票 02）。
+	const found = ENGLISH_FALLBACKS.filter((s) => new RegExp(`\\b${s}\\b(?!\\.\\w)`).test(uiText));
 	expect(found, '落回英文的介面字串').toEqual([]);
 }
 

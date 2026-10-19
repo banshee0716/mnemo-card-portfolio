@@ -21,7 +21,12 @@ export default defineConfig({
 			sidebar: [
 				{
 					label: '專案設計',
-					items: [{ label: '專案設計', slug: 'design' }],
+					items: [
+						{ label: '專案設計', slug: 'design' },
+						{ label: '問題定義', slug: 'design/problem' },
+						{ label: '設計決策', slug: 'design/decisions' },
+						{ label: '工程實作', slug: 'design/engineering' },
+					],
 				},
 				{
 					label: '學習科學',

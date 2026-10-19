@@ -19,7 +19,7 @@ round: 0
 - 意圖：`intent.md`（owner G1 2026-10-19）。文案：`copy/problem.md`、`copy/decisions.md`、`copy/engineering.md`
   （owner 2026-10-19 在對話中確認內容）。逐段出處保存在本機未追蹤的 `private/`（`.gitignore`），不提交。
 - spec：`spec.md`；工作票：`tickets/01`–`03`。
-- what is left：BUILDING（工作票 01 → 02 → 03）→ G4 → G5（owner 驗收）→ 一輪 Codex（G6A＋G6B）→ G7（推送需 owner 授權）。
+- what is left：BUILDING（工作票 01、02 完成；03 S3 核對）→ G4 → G5（owner 驗收）→ 一輪 Codex（G6A＋G6B）→ G7（推送需 owner 授權）。
 - blockers：無。
 
 ## Gates
@@ -52,6 +52,12 @@ round: 0
 - Builder: 總覽頁閱讀長度上限 450 → 500（spec R2；加五個繼續讀連結後約 +50 字）；G5 請 owner 確認。
 - Builder: 三篇閱讀長度範圍 1,200–1,700／3,200–4,200／2,800–3,800，不含「參考文獻」區（spec R7）。
 - Builder: 三篇引用的文獻在各頁文末加「參考文獻」區；Koriat & Bjork (2005) 書目以 Crossref 2026-10-19 核對。
+- Builder: 工作票 01 完成（`tests/font.spec.ts`；變異：字型變數改回明體，AC21 兩項變紅）。
+- Builder: 工作票 02 完成：三篇 `.mdx` 由 `copy/*.md` 程式轉出、逐字相同（diff 無差異）；總覽頁「繼續讀」新增句定稿於 `copy/design-overview.md`；
+  量測值：總覽 489、問題定義 1,419、設計決策 3,700、工程實作 3,309（皆在範圍內）。五項變異都變紅（刪表格一列、降一個 h2、拿掉 `next: false`、
+  側欄改名、`pagefind: false`）。`npm test` 214 passed；`dist/` 13 頁。
+- Builder: AC6 的英文落回字串比對改為不比對後面接「.字母」的寫法（`Next` 不比對 `Next.js`）：工程實作頁內文的技術名稱被誤判為介面字串；
+  檢查範圍不縮小（Starlight 標題錨點的英文字串也在內文區）。
 - Builder: 本切片的白名單沿用 portfolio-site spec §3 的規則與編號（W、N、S、F），新項目在本切片 spec 以新編號列出。
 
 ## G2A＋G2B 合審紀錄（2026-10-19）
