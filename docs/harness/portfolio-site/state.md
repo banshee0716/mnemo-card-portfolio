@@ -37,6 +37,7 @@ round: 1
 - Owner: 首頁改為「1 分鐘了解專案特色」，以雙鑽石模型（探索 → 定義 → 發展 → 交付）呈現，最後分支到學習科學與產品摘要頁。【已取代：首頁已改為導覽頁，雙鑽石移到專案設計頁，見下方導覽頁裁定】
 - Owner: 頁尾不放作者姓名（2026-10-19）：頁尾只有 GitHub 連結 https://github.com/banshee0716，連結文字「GitHub：banshee0716」；不放電子郵件；取代 W12 原「姓名＋連結」，spec W12／D4／R5 第 3 點／AC20 與 copy/home.md 已同步。
 - Owner: 首頁改為導覽頁（2026-10-19，看過雙鑽石首頁定稿後）：產品自己的首頁已介紹功能，作品集首頁只負責連結與引導——一句定位＋四個入口（專案設計、學習科學導讀、產品怎麼用、操作文件＝文件站根目錄），頁尾不變，仍不連產品正式站；已核對的雙鑽石文案原文搬到新的專案設計頁；總頁數改為十頁。
+- Owner: 2026-10-19 G5 — all pages accepted except home visuals; home restyled, awaiting owner re-check.
 
 ## Decisions by Builder
 - Builder: G4 驗證者的不阻擋建議已處理：AC7 的 Starlight 鍵盤測試改為九頁迴圈；AC12 產品頁詞記入 copy/product.md；AC9 的 light 測試先模擬系統深色；過時的決定標註「已取代」。copy/ 檔頭的「Builder 草稿」維持原樣，由 owner 在 G5 一併確認文案定稿。

@@ -1,18 +1,42 @@
-/* 首頁版面（spec R3 第 3 點）：只用 tokens.css 的變數，不寫色碼字面值。 */
+/*
+ * 首頁版面（spec R3 第 3 點）：只用 tokens.css 的變數，不寫色碼字面值。
+ * 結構：hero（Logo＋明體標題＋導言）→ 四張入口卡（桌機 2×2、手機單欄）→ 頁尾。
+ * 裝飾一律用 CSS 產生（::before／::after 的內容不算進 innerText，AC19 字數不變）。
+ */
 html {
 	background-color: var(--mc-bg);
 }
 
 body {
+	position: relative;
 	margin: 0;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 	background-color: var(--mc-bg);
 	color: var(--mc-text);
 	font-family: var(--mc-font-body);
 	line-height: 1.85;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+/* 頁首極淡的主色光暈；不攔截點擊。 */
+body::before {
+	content: '';
+	position: absolute;
+	inset: 0 0 auto;
+	height: 34rem;
+	background:
+		radial-gradient(60% 70% at 18% 0%, var(--mc-wash), transparent 70%),
+		radial-gradient(45% 55% at 92% 8%, var(--mc-wash), transparent 70%);
+	pointer-events: none;
+	z-index: 0;
 }
 
 .skip-link {
 	position: absolute;
+	z-index: 2;
 	inset-inline-start: 1rem;
 	inset-block-start: -4rem;
 	padding: 0.5rem 1rem;
@@ -27,20 +51,18 @@ body {
 }
 
 main {
-	max-width: 45rem;
+	position: relative;
+	z-index: 1;
+	flex: 1;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 58rem;
 	margin-inline: auto;
-	padding: 3rem 1rem;
+	padding: clamp(3.5rem, 11vw, 7.5rem) 1rem 4rem;
 }
 
 main:focus {
 	outline: none;
-}
-
-h1 {
-	font-family: var(--mc-font-heading);
-	font-size: clamp(2rem, 6vw, 3rem);
-	line-height: 1.25;
-	margin: 0 0 1rem;
 }
 
 a {
@@ -52,29 +74,204 @@ a:focus-visible {
 	outline-offset: 2px;
 }
 
-section {
-	margin-block: 1.75rem;
-	padding: 1rem 1.25rem;
-	border: 1px solid var(--mc-border);
-	border-radius: var(--mc-radius);
-	background-color: var(--mc-surface);
+/* ---------- Hero ---------- */
+.hero {
+	max-width: 48rem;
+	margin-block-end: clamp(2.75rem, 8vw, 4.5rem);
 }
 
-section h2 {
-	margin: 0 0 0.25rem;
+.hero-logo {
+	display: block;
+	width: 3.5rem;
+	height: 3.5rem;
+	margin-block-end: 1.75rem;
+	border-radius: 0.875rem;
+	box-shadow: var(--mc-shadow-logo);
+}
+
+h1 {
+	margin: 0 0 1.25rem;
+	font-family: var(--mc-font-heading);
+	font-size: clamp(2.25rem, 7vw, 3.75rem);
+	font-weight: 600;
+	line-height: 1.12;
+	letter-spacing: -0.015em;
+	text-wrap: balance;
+}
+
+.lead {
+	max-width: 34em;
+	margin: 0;
+	color: var(--mc-text-muted);
+	font-size: clamp(1.0625rem, 2.4vw, 1.25rem);
+	line-height: 1.9;
+	text-wrap: pretty;
+}
+
+/* ---------- 入口卡 ---------- */
+.entries {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1rem;
+	counter-reset: entry;
+}
+
+@media (min-width: 44rem) {
+	.entries {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+}
+
+.entry {
+	position: relative;
+	counter-increment: entry;
+	display: flex;
+	flex-direction: column;
+	padding: 1.5rem 3.5rem 1.625rem 1.5rem;
+	border: 1px solid var(--mc-border);
+	border-radius: 1rem;
+	background-color: var(--mc-surface);
+	box-shadow: var(--mc-shadow-rest);
+	transition:
+		transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1),
+		box-shadow 240ms cubic-bezier(0.2, 0.8, 0.2, 1),
+		border-color 240ms ease;
+}
+
+/* 小序號：入口的建議閱讀順序。 */
+.entry::before {
+	content: counter(entry, decimal-leading-zero);
+	margin-block-end: 0.75rem;
+	color: var(--mc-link);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	letter-spacing: 0.08em;
+	line-height: 1;
+}
+
+/* 箭頭：站內 →，站外 ↗。 */
+.entry::after {
+	content: '→';
+	position: absolute;
+	inset-block-start: 1.25rem;
+	inset-inline-end: 1.25rem;
+	display: grid;
+	place-items: center;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 999px;
+	background-color: var(--mc-active-bg);
+	color: var(--mc-active-fg);
+	font-size: 1rem;
+	line-height: 1;
+	transition: transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.entry-external::after {
+	content: '↗';
+}
+
+.entry h2 {
+	margin: 0 0 0.375rem;
 	font-family: var(--mc-font-heading);
 	font-size: 1.375rem;
+	font-weight: 600;
 	line-height: 1.4;
 }
 
-section p {
-	margin: 0;
-	color: var(--mc-text-muted);
+.entry h2 a {
+	color: var(--mc-text);
+	text-decoration: none;
 }
 
-footer {
-	max-width: 45rem;
-	margin-inline: auto;
-	padding: 1.5rem 1rem 3rem;
+/* 整張卡可點：連結的 ::after 撐滿卡片。 */
+.entry h2 a::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	border-radius: inherit;
+}
+
+.entry p {
+	margin: 0;
 	color: var(--mc-text-muted);
+	line-height: 1.8;
+}
+
+.entry:hover {
+	transform: translateY(-2px);
+	border-color: var(--mc-card-border-hover);
+	box-shadow: var(--mc-shadow-hover);
+}
+
+.entry:hover h2 a {
+	color: var(--mc-link);
+}
+
+.entry:hover::after {
+	transform: translateX(2px);
+}
+
+.entry-external:hover::after {
+	transform: translate(2px, -2px);
+}
+
+/*
+ * 鍵盤焦點畫在整張卡上。連結本身保留透明外框：一般模式不重複畫框，
+ * 強制色彩（高對比）模式下系統會把它畫成可見的外框。
+ */
+.entry h2 a:focus-visible {
+	outline: 2px solid transparent;
+	outline-offset: 2px;
+}
+
+.entry:has(a:focus-visible) {
+	border-color: var(--mc-accent);
+	box-shadow: var(--mc-focus-ring), var(--mc-shadow-hover);
+}
+
+.entry:has(a:focus-visible) h2 a {
+	color: var(--mc-link);
+}
+
+/* ---------- 頁尾 ---------- */
+.site-footer {
+	position: relative;
+	z-index: 1;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 58rem;
+	margin-inline: auto;
+	padding: 1.75rem 1rem 2.5rem;
+	border-block-start: 1px solid var(--mc-border);
+	color: var(--mc-text-muted);
+	font-size: 0.9375rem;
+	text-align: center;
+}
+
+.site-footer a {
+	color: var(--mc-text-muted);
+	text-decoration: none;
+	text-underline-offset: 0.2em;
+}
+
+.site-footer a:hover {
+	color: var(--mc-link);
+	text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.entry,
+	.entry::after {
+		transition: none;
+	}
+
+	.entry:hover,
+	.entry:hover::after,
+	.entry-external:hover::after {
+		transform: none;
+	}
 }

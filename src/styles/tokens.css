@@ -23,6 +23,14 @@
 	--mc-text-muted: #a0a3ab;
 	--mc-border: #353840;
 	--mc-link: #66b0ff;
+
+	/* 首頁卡片與背景（只在 home.css 使用）。 */
+	--mc-wash: rgba(0, 113, 227, 0.16);
+	--mc-card-border-hover: rgba(102, 176, 255, 0.45);
+	--mc-shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.3);
+	--mc-shadow-hover: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -12px rgba(0, 0, 0, 0.6);
+	--mc-shadow-logo: 0 6px 18px -6px rgba(0, 113, 227, 0.55);
+	--mc-focus-ring: 0 0 0 1px #17181c, 0 0 0 3px #66b0ff;
 }
 
 :root[data-theme='light'] {
@@ -40,4 +48,11 @@
 	--mc-text-muted: #545861;
 	--mc-border: #ececee;
 	--mc-link: #004a99;
+
+	--mc-wash: rgba(0, 113, 227, 0.09);
+	--mc-card-border-hover: rgba(0, 113, 227, 0.35);
+	--mc-shadow-rest: 0 1px 2px rgba(28, 29, 33, 0.04);
+	--mc-shadow-hover: 0 1px 2px rgba(28, 29, 33, 0.04), 0 14px 32px -14px rgba(28, 29, 33, 0.18);
+	--mc-shadow-logo: 0 6px 18px -6px rgba(0, 113, 227, 0.45);
+	--mc-focus-ring: 0 0 0 1px #ffffff, 0 0 0 3px #0071e3;
 }
