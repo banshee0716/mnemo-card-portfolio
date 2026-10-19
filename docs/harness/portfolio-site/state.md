@@ -18,7 +18,7 @@ round: 1
 - branch：`main`（尚未建立 GitHub 遠端；推送與遠端建立由 owner 執行）
 - 意圖：`intent.md`（owner G1 2026-10-19）。規格：`spec.md`。工作票：`tickets/01`–`06`（06 檔名 `06-ten-page-closeout.md`）。
 - what is left：G2 已過（修正已套用，依 owner 輕量流程不複審）→ BUILDING：工作票 01 起；03 可與 01、02 平行。LOW 無 G3；下一個審查閘門 G6A（與 G6B 合一輪 Codex），之前先過 G4、G5。
-- blockers：作者姓名（W12）待 owner 提供；不擋 G2，工作票 03 定稿前要有。
+- blockers：無（作者姓名已由 owner 裁定不放，見 § Decisions by owner）。
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-19，對話中逐項裁定）
@@ -35,6 +35,7 @@ round: 1
 - Owner: 不核可 N3（測試數量）、W14（儲存庫連結）、W11（點名 AI 工具）；N4 試用規模不寫。
 - Owner: W12 署名＝作者姓名＋GitHub 個人頁連結，不放電子郵件；姓名待提供。
 - Owner: 首頁改為「1 分鐘了解專案特色」，以雙鑽石模型（探索 → 定義 → 發展 → 交付）呈現，最後分支到學習科學與產品摘要頁。
+- Owner: 頁尾不放作者姓名（2026-10-19）：頁尾只有 GitHub 連結 https://github.com/banshee0716，連結文字「GitHub：banshee0716」；不放電子郵件；取代 W12 原「姓名＋連結」，spec W12／D4／R5 第 3 點／AC20 與 copy/home.md 已同步。
 - Owner: 首頁改為導覽頁（2026-10-19，看過雙鑽石首頁定稿後）：產品自己的首頁已介紹功能，作品集首頁只負責連結與引導——一句定位＋四個入口（專案設計、學習科學導讀、產品怎麼用、操作文件＝文件站根目錄），頁尾不變，仍不連產品正式站；已核對的雙鑽石文案原文搬到新的專案設計頁；總頁數改為十頁。
 
 ## Decisions by Builder

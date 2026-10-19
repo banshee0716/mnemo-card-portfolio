@@ -34,7 +34,7 @@ Mnemo-Card 是一套學習卡系統，讓人讀完內容後先自己想起來、
 
 <!-- footer 開始 -->
 
-【作者姓名：待 owner 提供】・[GitHub](https://github.com/banshee0716) <!-- W12 -->
+[GitHub：banshee0716](https://github.com/banshee0716) <!-- W12 -->
 
 <!-- footer 結束 -->
 
@@ -52,4 +52,4 @@ Mnemo-Card 是一套學習卡系統，讓人讀完內容後先自己想起來、
 
 ## 待 owner 提供
 
-- **作者姓名**（W12）：頁尾佔位 `【作者姓名：待 owner 提供】`，替換前不得上站（AC20）。
+- 無。（owner 2026-10-19 裁定頁尾不放作者姓名，只放 GitHub 連結。）
