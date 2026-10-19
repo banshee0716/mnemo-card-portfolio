@@ -3,13 +3,13 @@
 ```harness
 slug: design-expansion
 slice: "1"
-stage: SPEC
-holder: builder
+stage: REVIEW
+holder: reviewer
 tier: LOW
 gates_passed: [G1]
 open_p0p1: 0
 gate: G2A
-round: 0
+round: 1
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
 
@@ -18,13 +18,14 @@ round: 0
 - branch：`main`。
 - 意圖：`intent.md`（owner G1 2026-10-19）。文案：`copy/problem.md`、`copy/decisions.md`、`copy/engineering.md`
   （owner 2026-10-19 在對話中確認內容）。逐段出處保存在本機未追蹤的 `private/`（`.gitignore`），不提交。
-- what is left：寫 spec（新白名單項目逐條、三篇的字數範圍與 AC、字型 AC）與工作票 → G2A＋G2B 由全新 opus 一次合審 →
+- spec：`spec.md`；工作票：`tickets/01`–`03`。
+- what is left：G2A＋G2B 由全新 opus 一次合審（修完不複審）→
   BUILDING → G4 → G5（owner 驗收）→ 一輪 Codex（G6A＋G6B）→ G7（推送需 owner 授權）。
 - blockers：無。
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-19，對話中逐項裁定，含 16 題拷問）
-- [ ] G2A＋G2B spec 與工作票合審（fresh opus）
+- [ ] G2A＋G2B spec 與工作票合審（fresh opus，round 1 進行中）
 - [ ] G4 verified
 - [ ] G5 accepted by human
 - [ ] G6A＋G6B 一輪 Codex
@@ -38,6 +39,7 @@ round: 0
 - Owner: 做 AI 技能的主要原因是知識分類複雜，連到 KLI：一副牌組是一個知識組件，卡片與學習活動為完成此組件而安排。
 - Owner: 目標讀者以三種設想的使用者（人物設定）表格呈現。
 - Owner: 全站標題（含首頁）改用 Noto Sans TC，不再用 Noto Serif TC 明體。
+- Owner: `@fontsource-variable/noto-serif-tc` 直接從依賴移除（2026-10-19，取代原 spec R1 的同名依賴）；接續跑 G2。
 - Owner: 2026-10-19 確認 Builder 補寫的 9 處（目標讀者舉例、卡片零碎接四卡型、四卡型替代方案與代價、沿用原型框架、
   KLI「設計上的借用」限定等）都可以上站。
 
@@ -45,8 +47,11 @@ round: 0
 - Builder: 三篇頁面路徑 `design/problem/`、`design/decisions/`、`design/engineering/`（由 spec 定案）。
 - Builder: 字型改動已先在工作目錄完成（`tokens.css` 的 `--mc-font-heading` 指向內文字型；`astro.config.mjs` 與
   `src/pages/index.astro` 不再載入 Noto Serif TC；註解中的「明體」字樣移除）。`@fontsource-variable/noto-serif-tc`
-  仍在 `package.json`：portfolio-site spec R1 要求依賴與文件站一致，是否移除由本切片 spec 決定。
+  已依 owner 裁定移除（spec R4）。
 - Builder: 逐段出處不提交（理由：出處含私有來源的章節編號與內部紀錄描述，屬 F4 邊界）；改存 `private/` 並加入 `.gitignore`。
+- Builder: 總覽頁閱讀長度上限 450 → 500（spec R2；加五個繼續讀連結後約 +50 字）；G5 請 owner 確認。
+- Builder: 三篇閱讀長度範圍 1,200–1,700／3,200–4,200／2,800–3,800，不含「參考文獻」區（spec R7）。
+- Builder: 三篇引用的文獻在各頁文末加「參考文獻」區；Koriat & Bjork (2005) 書目以 Crossref 2026-10-19 核對。
 - Builder: 本切片的白名單沿用 portfolio-site spec §3 的規則與編號（W、N、S、F），新項目在本切片 spec 以新編號列出。
 
 ## 後續（不屬本切片）

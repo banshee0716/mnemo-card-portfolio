@@ -119,3 +119,12 @@ KLI 把學習分成三件事來看：學習者要學會什麼（知識）、腦�
 生成學習的文章裡有一句提醒：寫摘要、畫概念圖都可能幫助理解，但做了這些事，不代表理解真的發生了。用 AI 也是同樣的道理，所以技能只負責準備材料，回想、對照和解釋，仍然要學習者自己完成。
 
 代價是多了一個匯入的步驟，沒辦法在產品裡一鍵產生卡片。
+
+## 參考文獻
+
+- Fiorella, L. (2023). Making sense of generative learning. *Educational Psychology Review, 35*(2), Article 50. [https://doi.org/10.1007/s10648-023-09769-7](https://doi.org/10.1007/s10648-023-09769-7)
+- Koriat, A., & Bjork, R. A. (2005). Illusions of competence in monitoring one's knowledge during study. *Journal of Experimental Psychology: Learning, Memory, and Cognition, 31*(2), 187–194. [https://doi.org/10.1037/0278-7393.31.2.187](https://doi.org/10.1037/0278-7393.31.2.187)
+- Koedinger, K. R., Corbett, A. T., & Perfetti, C. (2012). The Knowledge-Learning-Instruction framework: Bridging the science-practice chasm to enhance robust student learning. *Cognitive Science, 36*(5), 757–798. [https://doi.org/10.1111/j.1551-6709.2012.01245.x](https://doi.org/10.1111/j.1551-6709.2012.01245.x)
+- Obergassel, N., Renkl, A., Endres, T., Nückles, M., Carpenter, S. K., & Roelle, J. (2026). Generative and retrieval tasks: Does the sequence matter and do sequence effects depend on learning task delay? *Applied Cognitive Psychology, 40*(2), Article e70188. [https://doi.org/10.1002/acp.70188](https://doi.org/10.1002/acp.70188)
+- Pollock, E., Chandler, P., & Sweller, J. (2002). Assimilating complex information. *Learning and Instruction, 12*(1), 61–86. [https://doi.org/10.1016/S0959-4752(01)00016-0](https://doi.org/10.1016/S0959-4752(01)00016-0)
+- Roelle, J., Endres, T., Abel, R., Obergassel, N., Nückles, M., & Renkl, A. (2023). Happy together? On the relationship between research on retrieval practice and generative learning using the case of follow-up learning tasks. *Educational Psychology Review, 35*(4), Article 102. [https://doi.org/10.1007/s10648-023-09810-9](https://doi.org/10.1007/s10648-023-09810-9)

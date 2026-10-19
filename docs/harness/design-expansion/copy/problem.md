@@ -51,3 +51,8 @@ AI 摘要和問答工具，能很快把一份資料整理成清楚的重點。�
 卡片還有兩個附帶的好處。翻面這個動作本身就是「先遮住、再對照」，回想的流程不用另外教。而一張卡的容量，剛好適合放一個概念、一個機制或一段關係，很適合事實性知識。
 
 代價是，卡片天生比較零碎。拆得越細，越需要另外想辦法把它們重新接起來，這也是後面四種卡型要處理的問題。下一篇〈設計決策〉會一個一個說明這些決策。
+
+## 參考文獻
+
+- Carpenter, S. K., Pan, S. C., & Butler, A. C. (2022). The science of effective learning with spacing and retrieval practice. *Nature Reviews Psychology, 1*(9), 496–511. [https://doi.org/10.1038/s44159-022-00089-1](https://doi.org/10.1038/s44159-022-00089-1)
+- Koriat, A., & Bjork, R. A. (2005). Illusions of competence in monitoring one's knowledge during study. *Journal of Experimental Psychology: Learning, Memory, and Cognition, 31*(2), 187–194. [https://doi.org/10.1037/0278-7393.31.2.187](https://doi.org/10.1037/0278-7393.31.2.187)
