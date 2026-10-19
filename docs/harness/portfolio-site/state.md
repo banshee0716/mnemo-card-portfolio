@@ -4,7 +4,7 @@
 slug: portfolio-site
 slice: "1"
 stage: ACCEPTED
-holder: reviewer
+holder: none
 tier: LOW
 gates_passed: [G1, G2A, G2B, G4, G5]
 open_p0p1: 0
@@ -81,3 +81,4 @@ round: 1
 | 8 | P3 | AC20 九頁無 `mailto:` 沒有歸屬 | 放進 `tests/site.spec.ts` 的 `PAGES` 迴圈，歸工作票 05；首頁頁尾部分歸 04 |
 | 9 | P3 | 工作票 01 變異測試留下暫存分支 | 測試後刪除暫存分支，並確認 `git branch -a` 不再列出 |
 | 10 | P3 | 工作票 01 沒有 Starlight 頁時 Pagefind 可能不建索引 | 01 允許一頁暫置 Starlight 頁（學習科學導讀），02 以正式檔取代 |
+- Owner: 2026-10-19 G6A/G6B 豁免（「應該不用Ｇ６，直接處理Ｇ７」）；預審發現 G6-P2-1、P3-1..3 轉為後續，未修。owner 授權 Claude 建立 GitHub 公開儲存庫並推送（G7）。
