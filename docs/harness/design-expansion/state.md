@@ -3,12 +3,12 @@
 ```harness
 slug: design-expansion
 slice: "1"
-stage: ACCEPTANCE
-holder: owner
+stage: RELEASING
+holder: builder
 tier: LOW
-gates_passed: [G1, G2A, G2B, G4]
+gates_passed: [G1, G2A, G2B, G4, G5]
 open_p0p1: 0
-gate: G5
+gate: G7
 round: 0
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
@@ -26,8 +26,8 @@ round: 0
 - [x] G1 intent approved by human（2026-10-19，對話中逐項裁定，含 16 題拷問）
 - [x] G2A＋G2B spec 與工作票合審（fresh opus，2026-10-19，一輪合審，APPROVE AFTER FIXES；修正已套用，不複審）
 - [x] G4 verified（2026-10-19；全新工作階段驗證者在乾淨 clone `378c7a4` 上 VERIFIED、無 FAIL：214 passed、13 頁、check:public 乾淨；變異抽查四項皆紅；`verification/g4-verifier.md`）
-- [ ] G5 accepted by human
-- [ ] G6A＋G6B 一輪 Codex
+- [x] G5 accepted by human（2026-10-19，owner：「先這樣改吧」；含總覽頁上限 500）
+- [ ] G6A＋G6B 一輪 Codex（owner 2026-10-19 豁免：「不用走審查直接 G7」）
 - [ ] G7 released
 
 ## Decisions by owner（2026-10-19）
@@ -40,6 +40,7 @@ round: 0
 - Owner: 全站標題（含首頁）改用 Noto Sans TC，不再用 Noto Serif TC 明體。
 - Owner: `@fontsource-variable/noto-serif-tc` 直接從依賴移除（2026-10-19，取代原 spec R1 的同名依賴）；接續跑 G2。
 - Owner: 工程篇〈同時送出的請求〉保留，記為 F7 例外（2026-10-19，G2 #5）：已修好的並發正確性問題，不寫機制名稱、函式或利用方式。
+- Owner: 2026-10-19 G5 接受（含總覽頁閱讀長度上限 500）；G6A＋G6B 豁免；授權 G7 推送 main。
 - Owner: 2026-10-19 確認 Builder 補寫的 9 處（目標讀者舉例、卡片零碎接四卡型、四卡型替代方案與代價、沿用原型框架、
   KLI「設計上的借用」限定等）都可以上站。
 
