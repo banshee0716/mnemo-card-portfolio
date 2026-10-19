@@ -24,4 +24,5 @@ S1、S2；S3（逐字與白名單由工作票 03 核對）。
 - [ ] `npm test` 全綠（`PAGES` 十三頁的 AC2–AC6、AC20，以及 AC10′、AC12′、AC14′、AC19′）
 - [ ] `find dist -name index.html -not -path '*/404/*' | wc -l` 輸出 `13`
 - [ ] `npm run check:public` 乾淨
-- [ ] 變異：刪掉問題定義頁表格的一列，AC10′ 變紅；把設計決策頁刪掉一節，AC10′ 或 AC19′ 變紅；把工程實作的 `next: false` 拿掉，AC10′ 第 3 點變紅
+- [ ] 變異：刪掉問題定義頁表格的一列，AC10′ 變紅；把設計決策頁刪掉一節，AC10′ 或 AC19′ 變紅；把工程實作的 `next: false` 拿掉，AC10′ 第 3 點變紅；
+  把側欄「問題定義」改名為「問題」，AC14′ 變紅；在 `design/decisions.mdx` 的前言加 `pagefind: false`，AC12′ 的「知識組件」變紅

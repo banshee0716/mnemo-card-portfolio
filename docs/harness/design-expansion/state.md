@@ -3,13 +3,13 @@
 ```harness
 slug: design-expansion
 slice: "1"
-stage: REVIEW
-holder: reviewer
+stage: BUILDING
+holder: builder
 tier: LOW
-gates_passed: [G1]
+gates_passed: [G1, G2A, G2B]
 open_p0p1: 0
-gate: G2A
-round: 1
+gate: G4
+round: 0
 ```
 本區塊是唯一的狀態事實；下方文字都不構成授權。
 
@@ -19,13 +19,12 @@ round: 1
 - 意圖：`intent.md`（owner G1 2026-10-19）。文案：`copy/problem.md`、`copy/decisions.md`、`copy/engineering.md`
   （owner 2026-10-19 在對話中確認內容）。逐段出處保存在本機未追蹤的 `private/`（`.gitignore`），不提交。
 - spec：`spec.md`；工作票：`tickets/01`–`03`。
-- what is left：G2A＋G2B 由全新 opus 一次合審（修完不複審）→
-  BUILDING → G4 → G5（owner 驗收）→ 一輪 Codex（G6A＋G6B）→ G7（推送需 owner 授權）。
+- what is left：BUILDING（工作票 01 → 02 → 03）→ G4 → G5（owner 驗收）→ 一輪 Codex（G6A＋G6B）→ G7（推送需 owner 授權）。
 - blockers：無。
 
 ## Gates
 - [x] G1 intent approved by human（2026-10-19，對話中逐項裁定，含 16 題拷問）
-- [ ] G2A＋G2B spec 與工作票合審（fresh opus，round 1 進行中）
+- [x] G2A＋G2B spec 與工作票合審（fresh opus，2026-10-19，一輪合審，APPROVE AFTER FIXES；修正已套用，不複審）
 - [ ] G4 verified
 - [ ] G5 accepted by human
 - [ ] G6A＋G6B 一輪 Codex
@@ -40,6 +39,7 @@ round: 1
 - Owner: 目標讀者以三種設想的使用者（人物設定）表格呈現。
 - Owner: 全站標題（含首頁）改用 Noto Sans TC，不再用 Noto Serif TC 明體。
 - Owner: `@fontsource-variable/noto-serif-tc` 直接從依賴移除（2026-10-19，取代原 spec R1 的同名依賴）；接續跑 G2。
+- Owner: 工程篇〈同時送出的請求〉保留，記為 F7 例外（2026-10-19，G2 #5）：已修好的並發正確性問題，不寫機制名稱、函式或利用方式。
 - Owner: 2026-10-19 確認 Builder 補寫的 9 處（目標讀者舉例、卡片零碎接四卡型、四卡型替代方案與代價、沿用原型框架、
   KLI「設計上的借用」限定等）都可以上站。
 
@@ -53,6 +53,31 @@ round: 1
 - Builder: 三篇閱讀長度範圍 1,200–1,700／3,200–4,200／2,800–3,800，不含「參考文獻」區（spec R7）。
 - Builder: 三篇引用的文獻在各頁文末加「參考文獻」區；Koriat & Bjork (2005) 書目以 Crossref 2026-10-19 核對。
 - Builder: 本切片的白名單沿用 portfolio-site spec §3 的規則與編號（W、N、S、F），新項目在本切片 spec 以新編號列出。
+
+## G2A＋G2B 合審紀錄（2026-10-19）
+- 審查者：全新工作階段的 opus；spec 與工作票一輪合審（owner LOW 輕量流程，修完不複審）。
+- 結論：APPROVE AFTER FIXES。P1 四項、P2 八項、P3 三項，全部已處理；open P0/P1 = 0。
+
+| # | 等級 | 發現 | 處置 |
+| --- | --- | --- | --- |
+| 1 | P1 | 工程篇「樣本 20 筆時 p95 等於最大值」與出處不符（19 筆以下才相等；當時 12 對） | 改為「不到 20 筆時……當時只量了 12 對」；E11 同步 |
+| 2 | P1 | 「慢 1.57 倍是混到上一輪資料」出處只說最可能、未查證 | 改為「最可能是混用兩代測試資料，但無法確認，結論撤回」；E11 同步 |
+| 3 | P1 | 卡數上限「一開始只在應用程式裡檢查」不實（原本沒有上限）；否決逐條檢查的理由寫錯 | 依出處重寫該節與 E5 |
+| 4 | P1 | AC21 量測 h3，但頁面沒有 h3 | AC21 改為 h1 與 h2 |
+| 5 | P2 | E6 碰到 F7，與快取一節標準不一致；「測試時發現」不實 | owner 裁定保留為 F7 例外；開頭改為「盤點程式時發現，先寫測試重現」 |
+| 6 | P2 | 13→1、6.7–8.3 倍缺測試條件；壓力測試缺日期 | 補「在大量測試資料下」「2026 年 9 月」 |
+| 7 | P2 | 「照時間順序寫」不實 | 改為「照主題分段」 |
+| 8 | P2 | E4 出處欄「只寫資料一致性」暗示有未寫的原因 | 刪「只」 |
+| 9 | P2 | 「馬上對答案」超出本站〈檢索練習〉 | 改為「有回饋可以對照」 |
+| 10 | P2 | KLI 例子與本站原文不符 | 照〈KLI 框架〉原文改 |
+| 11 | P2 | AC10′ h2 結尾與工程篇矛盾、工程篇連結未斷言 | 逐頁寫明結尾；補工程篇兩個連結與參考文獻 DOI 斷言 |
+| 12 | P2 | R1 與 AC22 對逐字與連結的說法不一致 | 統一為含連結與參考文獻逐字相同、不得新增連結 |
+| 13 | P3 | 出處欄的文件描述接近主程式切片名稱 | 全部改為泛稱（規格、實作計畫、實驗報告等） |
+| 14 | P3 | 「先不拆」「先固定」暗示未來計畫（F9） | 改為「以現在的規模不需要拆」「固定使用」 |
+| 15 | P3 | 變異未涵蓋 AC12′、AC14′；工作票 03 未要求核對數字 | 工作票 02 加兩項變異；工作票 03 要求逐一核對數字 |
+
+另依審查者「AI 腔」清單改寫 8 處句子（頁一 4 處、頁二 2 處與「代價是」句型變化、頁三 2 處）。spec 另明寫原 AC1、AC10、AC12、AC14、AC16、AC19 由新條文取代。
+`private/drafts-with-sources.md` 是 G2 前的版本，出處仍有效；文案以 `copy/` 為準。
 
 ## 後續（不屬本切片）
 - owner 考慮把產品與文件站的標題字型也統一為黑體（兩者目前用明體）；在各自的儲存庫另開切片。
