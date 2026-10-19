@@ -44,7 +44,7 @@ npx playwright install chromium     # 第一次跑測試前安裝瀏覽器
 npm run dev       # 本機預覽（搜尋只在正式建置可用）
 npm run build     # 靜態建置，產生 dist/ 與 Pagefind 索引
 npm run preview   # 以 base 路徑預覽建置結果：http://localhost:4321/mnemo-card-portfolio/
-npm test          # Playwright：自動建置並啟動 preview，檢查九頁的連結、手機寬度、鍵盤、無障礙、搜尋
+npm test          # Playwright：自動建置並啟動 preview，檢查十頁的連結、手機寬度、鍵盤、無障礙、搜尋
 npm run check:public  # 掃描每個提交的公開衛生（內部細節、憑證、個人信箱、提交者身分）；推送前必跑
 ```
 

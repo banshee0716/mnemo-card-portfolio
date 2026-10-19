@@ -91,7 +91,7 @@
   其餘頁間相對連結（`../retrieval-practice/` 等）因網址結構相同，不改。上一篇／下一篇：導讀 `prev: false`（原有），
   其餘依側欄順序，KLI 無下一篇。
 - **R8 產品摘要頁**（`product/`）：
-  1. 標題「產品怎麼用」（側欄文字同；確切標題隨工作票 03 文案定稿）；200–500 字；`prev: false`、`next: false`。
+  1. 標題「產品怎麼用」（側欄文字同；確切標題隨工作票 03 文案定稿）；200–500 字（h1 加 `.sl-markdown-content` 的 `innerText` 去掉所有空白；`alt` 不計、「圖：」說明計入；排除標題錨點的螢幕閱讀器文字 `.sr-only`「…」段落，與 AC19 第 1 點相同）；`prev: false`、`next: false`。
   2. 內容：一張卡怎麼學、牌組與排程、匯入匯出與技能；每段只寫 §3 的 W 項，不寫操作步驟（步驟在文件站）。
   3. 截圖恰為 §3.2 的 S1–S4 四張，從文件站 `src/assets/screenshots/` 複製，以 `astro:assets` 的 `<Image>` 輸出 webp，
      每張有非空 `alt` 與以「圖：」開頭的 `figcaption`。
