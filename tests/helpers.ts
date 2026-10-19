@@ -3,9 +3,13 @@ import { expect, type Page } from '@playwright/test';
 
 export const BASE = '/mnemo-card-portfolio/';
 
+/** 尚未建立的頁面（工作票 05 建立 product/ 後必須清空此清單）：AC3 暫不要求回 200。 */
+export const PENDING_PAGES: string[] = [`${BASE}product/`];
+
 /** 測試涵蓋的頁面（相對於 base）。後續工作票在此加入新頁面；kind 區分自訂首頁與 Starlight 頁。 */
 export const PAGES: { path: string; title: string; kind: 'home' | 'starlight' }[] = [
 	{ path: '', title: 'Mnemo-Card portfolio', kind: 'home' },
+	{ path: 'design/', title: '專案設計', kind: 'starlight' },
 	{ path: 'learning-science/', title: '學習科學導讀', kind: 'starlight' },
 	{ path: 'learning-science/retrieval-practice/', title: '檢索練習：為什麼「試著想起來」也是一種學習？', kind: 'starlight' },
 	{ path: 'learning-science/spaced-practice/', title: '間隔練習：為什麼不要把複習全部擠在同一天？', kind: 'starlight' },
@@ -64,7 +68,7 @@ export async function expectInternalLinksOk(page: Page, path: string) {
 	const brokenDeepLinks: string[] = [];
 	for (const url of internal) {
 		const res = await page.request.get(url);
-		if (res.status() !== 200) failures.push(`${res.status()} ${url}`);
+		if (res.status() !== 200 && !PENDING_PAGES.includes(new URL(url).pathname)) failures.push(`${res.status()} ${url}`);
 		// 跨頁錨點（other-page/#段落）要對應到目標頁上存在的 id。
 		const ids = fragments.get(url);
 		if (ids && res.status() === 200) {
@@ -173,3 +177,22 @@ export async function tabUntil(page: Page, selector: string, maxTabs = 60) {
 	return false;
 }
 
+
+/** 用鍵盤打開搜尋、輸入關鍵字，等結果或「找不到」訊息出現，回傳結果連結的 href 清單（可能為空）。 */
+export async function searchHrefs(page: Page, query: string) {
+	await page.goto('learning-science/');
+	await page.locator('.pagefind-ui__form').waitFor({ state: 'attached' });
+	await page.keyboard.press('Control+k');
+	const input = page.locator('.pagefind-ui__search-input');
+	await expect(input).toBeFocused();
+	await input.fill(query);
+	await expect(page.locator('.pagefind-ui__message')).toContainText(query);
+	return page
+		.locator('.pagefind-ui__result-link')
+		.evaluateAll((els) => els.map((el) => el.getAttribute('href') ?? ''));
+}
+
+/** 去掉所有空白後的字元數（AC19 的量法）。 */
+export function countChars(text: string) {
+	return text.replace(/\s/g, '').length;
+}

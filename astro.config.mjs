@@ -21,6 +21,10 @@ export default defineConfig({
 			lastUpdated: false,
 			sidebar: [
 				{
+					label: '專案設計',
+					items: [{ label: '專案設計', slug: 'design' }],
+				},
+				{
 					label: '學習科學',
 					items: [
 						{ label: '導讀', slug: 'learning-science' },

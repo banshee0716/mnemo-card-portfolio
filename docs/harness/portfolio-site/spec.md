@@ -256,7 +256,7 @@
   R2 設定核對：`grep -c 'lastUpdated: false' astro.config.mjs` 輸出 `1`；`grep -c 'editLink' astro.config.mjs` 輸出 `0`（未設定即不顯示編輯連結）；
   `grep -cE '^[[:space:]]*components:' astro.config.mjs` 輸出 `0`（沒有覆寫元件）。
 - **AC19 閱讀長度**（Playwright；字元數都是 `innerText` 去掉所有空白 `/\s/g` 後計）：
-  1. 專案設計頁：h1 加 `.sl-markdown-content` 的字元數在 250–450 之間（R5a 第 4 點：中文默讀約每分鐘 390 字，Brysbaert, 2019，450 字約 1.2 分鐘；不含側欄、頁首、文章目錄、上下篇）。
+  1. 專案設計頁：h1 加 `.sl-markdown-content` 的字元數（排除標題錨點的螢幕閱讀器文字 `.sr-only`「…」段落）在 250–450 之間（R5a 第 4 點：中文默讀約每分鐘 390 字，Brysbaert, 2019，450 字約 1.2 分鐘；不含側欄、頁首、文章目錄、上下篇）。
   2. 首頁：`main` 的字元數在 60–180 之間（R5 第 4 點；`h1` 計入，`footer` 與跳到主要內容連結不計入）。
 - **AC20 頁尾與佔位**：`grep -rn '待 owner 提供' src/` 沒有輸出；Playwright：首頁 `footer` 內恰有一個連結，`href` 為 `https://github.com/banshee0716`、
   文字為「GitHub：banshee0716」，`footer` 文字不含「待 owner」（首頁部分屬工作票 04）。十頁都沒有 `mailto:` 連結：寫在 `tests/site.spec.ts` 的 `PAGES` 迴圈內，屬工作票 05（十頁到齊時）。

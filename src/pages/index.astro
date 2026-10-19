@@ -33,7 +33,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 		<a class="skip-link" href="#main">跳到主要內容</a>
 		<main id="main" tabindex="-1">
 			<h1>Mnemo-Card portfolio</h1>
-			<p>網站建置中</p>
+			<p>Mnemo-Card 是一套學習卡系統，讓人讀完內容後先自己想起來、再用自己的話解釋；從下面四個入口認識它。</p>
+			<section>
+				<h2><a href={`${base}/design/`}>專案設計</a></h2>
+				<p>用雙鑽石的四個階段，看這個專案怎麼從問題走到交付。</p>
+			</section>
+			<section>
+				<h2><a href={`${base}/learning-science/`}>學習科學導讀</a></h2>
+				<p>設計參考了哪些研究，以及研究支持到哪裡。</p>
+			</section>
+			<section>
+				<h2><a href={`${base}/product/`}>產品怎麼用</a></h2>
+				<p>用四張畫面摘要主要功能。</p>
+			</section>
+			<section>
+				<h2><a href="https://banshee0716.github.io/mnemo-card-docs/">操作文件</a></h2>
+				<p>第一次使用、複習管理與 AI 產卡的完整步驟。</p>
+			</section>
 		</main>
+		<footer>
+			<a href="https://github.com/banshee0716">GitHub：banshee0716</a>
+		</footer>
 	</body>
 </html>
