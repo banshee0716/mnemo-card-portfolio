@@ -45,6 +45,7 @@ round: 1
 - Builder: 首頁分支只留學習科學導讀與產品摘要兩個入口（owner 只列這兩個）；文件站由產品摘要頁連過去。
 - Builder: 工作票 01 的 `PAGES` 項目多一個 `kind: 'home' | 'starlight'` 欄位（理由：首頁沒有搜尋框，AC6 的「搜尋」檢查只適用 Starlight 頁；後續票沿用）。
 - Builder: `tokens.css` 除 spec R3 列的主色外，另定義首頁用的 `--mc-bg`、`--mc-text`、`--mc-text-muted`、`--mc-border`、`--mc-link`、`--mc-on-accent`（理由：首頁不得出現色碼字面值，AC8）。
+- Builder: `searchFor` 改從 `learning-science/` 開始搜（理由：首頁沒有搜尋框，R9）；`tests/navigation.spec.ts` 的鍵盤測試也改在 Starlight 頁執行。
 - Builder: 學習科學網址沿用文件站的 `learning-science/<slug>/`，文內頁間相對連結不必改；摘要頁 slug `product/`。
 
 ## G2A＋G2B 合審紀錄（2026-10-19）

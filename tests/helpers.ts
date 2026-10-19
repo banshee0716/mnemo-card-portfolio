@@ -7,6 +7,12 @@ export const BASE = '/mnemo-card-portfolio/';
 export const PAGES: { path: string; title: string; kind: 'home' | 'starlight' }[] = [
 	{ path: '', title: 'Mnemo-Card portfolio', kind: 'home' },
 	{ path: 'learning-science/', title: '學習科學導讀', kind: 'starlight' },
+	{ path: 'learning-science/retrieval-practice/', title: '檢索練習：為什麼「試著想起來」也是一種學習？', kind: 'starlight' },
+	{ path: 'learning-science/spaced-practice/', title: '間隔練習：為什麼不要把複習全部擠在同一天？', kind: 'starlight' },
+	{ path: 'learning-science/generative-learning/', title: '生成學習：為什麼整理過，不一定真的理解了？', kind: 'starlight' },
+	{ path: 'learning-science/self-explanation/', title: '自我解釋：為什麼要問自己「這一步為什麼成立」？', kind: 'starlight' },
+	{ path: 'learning-science/cognitive-load/', title: '認知負荷理論：為什麼有些教材讓人越看越亂？', kind: 'starlight' },
+	{ path: 'learning-science/kli-framework/', title: 'KLI 框架：為什麼要先想清楚「學會」是什麼意思？', kind: 'starlight' },
 ];
 
 export type Theme = 'light' | 'dark';
@@ -82,7 +88,8 @@ export async function expectInternalLinksOk(page: Page, path: string) {
 
 /** 用鍵盤打開搜尋、輸入關鍵字，回傳結果連結的 href 清單。 */
 export async function searchFor(page: Page, query: string) {
-	await page.goto('');
+	// 首頁沒有搜尋框（R9），從 Starlight 頁開始搜。
+	await page.goto('learning-science/');
 	await page.locator('.pagefind-ui__form').waitFor({ state: 'attached' });
 	await page.keyboard.press('Control+k');
 	const input = page.locator('.pagefind-ui__search-input');
