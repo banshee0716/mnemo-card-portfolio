@@ -4,14 +4,14 @@ depends-on: []
 
 ## 要做什麼
 
-spec R1、R2（除網站名稱外）、R3、R4、R10、R11、R12、K2、K3。本票不推送。
+spec R1、R2、R3、R4、R10、R11、R12、K2、K3。本票不推送。
 
 1. 依 R1 建立 Astro＋Starlight 專案（版本照文件站 `package.json` 精確版本），寫 `.npmrc`、`engines`、
    `dev`／`build`／`preview`／`test`／`check:public` 腳本、`.gitignore`（環境檔規則依 R11 第 4 點）、`README.md`（兩三句：這是什麼）。
 2. `astro.config.mjs`：`site`、`base: '/mnemo-card-portfolio'`、根語系 `zh-TW`、Logo、`customCss`、關閉 `editLink`／`lastUpdated`。
-   網站名稱先用暫定值「Mnemo-Card」，記 `state.md` § Decisions，待工作票 03 定稿（spec §6 D1）。
+   網站名稱「Mnemo-Card portfolio」（owner D1）。
 3. 依 R3 建 `src/styles/tokens.css`、`src/styles/custom.css`；複製 `src/assets/logo.svg`、`src/content/i18n/zh-TW.json`。
-4. 首頁暫置：`src/pages/index.astro` 只有 `h1`「Mnemo-Card」、一句「網站建置中」、跳到主要內容連結、R4 主題腳本，
+4. 首頁暫置：`src/pages/index.astro` 只有 `h1`「Mnemo-Card portfolio」、一句「網站建置中」、跳到主要內容連結、R4 主題腳本，
    只用 `tokens.css`。不放任何 §3 以外的內容。
 5. `playwright.config.ts`（R12，埠 4398）、`tests/helpers.ts`（`BASE`、`PAGES`、爬連結、axe、主題輔助）、`tests/site.spec.ts`
    對 `PAGES` 跑 AC2、AC3、AC4、AC5、AC6；先只有首頁一項。
