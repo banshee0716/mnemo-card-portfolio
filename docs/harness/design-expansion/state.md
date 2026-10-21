@@ -3,10 +3,10 @@
 ```harness
 slug: design-expansion
 slice: "1"
-stage: RELEASING
-holder: builder
+stage: RELEASED
+holder: none
 tier: LOW
-gates_passed: [G1, G2A, G2B, G4, G5]
+gates_passed: [G1, G2A, G2B, G4, G5, G7]
 open_p0p1: 0
 gate: G7
 round: 0
@@ -19,7 +19,7 @@ round: 0
 - 意圖：`intent.md`（owner G1 2026-10-19）。文案：`copy/problem.md`、`copy/decisions.md`、`copy/engineering.md`
   （owner 2026-10-19 在對話中確認內容）。逐段出處保存在本機未追蹤的 `private/`（`.gitignore`），不提交。
 - spec：`spec.md`；工作票：`tickets/01`–`03`。
-- what is left：G5（owner 驗收三篇新頁、總覽頁「繼續讀」、全站黑體標題，並確認總覽頁上限 500）→ 一輪 Codex（G6A＋G6B）→ G7（推送需 owner 授權） → G5（owner 驗收）→ 一輪 Codex（G6A＋G6B）→ G7（推送需 owner 授權）。
+- what is left：無（G7 完成）。後續見文末。
 - blockers：無。
 
 ## Gates
@@ -28,7 +28,7 @@ round: 0
 - [x] G4 verified（2026-10-19；全新工作階段驗證者在乾淨 clone `378c7a4` 上 VERIFIED、無 FAIL：214 passed、13 頁、check:public 乾淨；變異抽查四項皆紅；`verification/g4-verifier.md`）
 - [x] G5 accepted by human（2026-10-19，owner：「先這樣改吧」；含總覽頁上限 500）
 - [ ] G6A＋G6B 一輪 Codex（owner 2026-10-19 豁免：「不用走審查直接 G7」）
-- [ ] G7 released
+- [x] G7 released（2026-10-21；owner 推送 main `911afe6`；Pages 工作流 run 39575914278 success；S4：十三頁與 pagefind.js 全部 200，線上 design/ 含三篇新頁連結、首頁不再載入 Noto Serif TC）
 
 ## Decisions by owner（2026-10-19）
 - Owner: 三篇標題依序為〈問題定義：學習者真正卡在哪裡〉〈設計決策：從研究建議到產品功能〉〈工程實作：技術選型與工程抉擇〉。
